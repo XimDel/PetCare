@@ -26,7 +26,7 @@ import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewinicioPropietario() {
+fun PreviewOwnerStartPage() {
     val navController = rememberNavController()
     OwnerStartPage(navController = navController)
 }
@@ -88,7 +88,7 @@ fun OwnerStartPage(navController: NavController) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                RoleButtonIP(
+                RoleButtonOSP(
                     text = "Iniciar",
                     color = Color(0xFFFFE599),
                     isSelected = selectedRole == "Iniciar",
@@ -98,7 +98,7 @@ fun OwnerStartPage(navController: NavController) {
                     }
                 )
 
-                RoleButtonIP(
+                RoleButtonOSP(
                     text = "Registrarse",
                     color = Color(0xFFFFE599),
                     isSelected = selectedRole == "Registrarse",
@@ -113,7 +113,7 @@ fun OwnerStartPage(navController: NavController) {
 }
 
 @Composable
-fun RoleButtonIP(
+fun RoleButtonOSP(
     text: String,
     color: Color,
     isSelected: Boolean,
