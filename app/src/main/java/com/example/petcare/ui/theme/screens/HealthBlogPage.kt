@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+//import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
