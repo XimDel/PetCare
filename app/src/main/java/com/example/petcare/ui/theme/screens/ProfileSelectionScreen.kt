@@ -87,7 +87,7 @@ fun ProfileSelectionScreen(navController: NavController) {
                 isSelected = selectedRole == "Propietario",
                 onClick = {
                     selectedRole = "Propietario"
-                    //navController.navigate(Screen.inicioPropietario.route)
+                    //navController.navigate(Screen.OwnerStartPage.route)
                 }
             )
             Spacer(modifier = Modifier.height(30.dp))
