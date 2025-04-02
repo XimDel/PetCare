@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -93,7 +94,7 @@ fun OwnerStartPage(navController: NavController) {
                     isSelected = selectedRole == "Iniciar",
                     onClick = {
                         selectedRole = "Iniciar"
-                        //navController.navigate(Screen.OwnerLoginPage.route)
+                        navController.navigate(Screen.OwnerLoginPage.route)
                     }
                 )
 
@@ -103,7 +104,7 @@ fun OwnerStartPage(navController: NavController) {
                     isSelected = selectedRole == "Registrarse",
                     onClick = {
                         selectedRole = "Registrarse"
-                        // Navigate to register screen if needed
+                        // anadir navegacion a registro
                     }
                 )
             }

@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -35,15 +36,12 @@ fun ProfileSelectionScreen(navController: NavController) {
     var selectedRole by remember { mutableStateOf<String?>(null) }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // Imagen de Fondo
         Image(
             painter = painterResource(id = R.drawable.inicio_background),
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-
-        // Logo y Petcare
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -87,7 +85,7 @@ fun ProfileSelectionScreen(navController: NavController) {
                 isSelected = selectedRole == "Propietario",
                 onClick = {
                     selectedRole = "Propietario"
-                    //navController.navigate(Screen.OwnerStartPage.route)
+                    navController.navigate(Screen.OwnerStartPage.route)
                 }
             )
             Spacer(modifier = Modifier.height(30.dp))
