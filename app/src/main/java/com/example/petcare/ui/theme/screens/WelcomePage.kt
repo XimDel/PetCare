@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -43,7 +44,7 @@ fun WelcomePage(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                //.clickable { navController.navigate(Screen.ProfileSelectionScreen.route)  }
+                .clickable { navController.navigate(Screen.ProfileSelectionScreen.route)  }
         ) {
             Image(
                 painter = painterResource(id = R.drawable.logo),
