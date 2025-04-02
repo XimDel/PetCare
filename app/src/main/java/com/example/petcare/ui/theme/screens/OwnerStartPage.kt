@@ -93,7 +93,7 @@ fun OwnerStartPage(navController: NavController) {
                     isSelected = selectedRole == "Iniciar",
                     onClick = {
                         selectedRole = "Iniciar"
-                        //navController.navigate(Screen.ingresoPropietario.route)
+                        //navController.navigate(Screen.OwnerLoginPage.route)
                     }
                 )
 
