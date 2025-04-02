@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.petcare.ui.theme.screens.BlogPostScren
 import com.example.petcare.ui.theme.screens.ProfileSelectionScreen
 import com.example.petcare.ui.theme.screens.WelcomePage
 import com.example.petcare.ui.theme.screens.OwnerStartPage
@@ -33,6 +34,9 @@ fun AppNavigation() {
         }
         composable(Screen.OwnerLoginPage.route) {
             OwnerLoginPage(navController = navController)
+        }
+        composable(Screen.OwnerLoginPage.route) {
+            BlogPostScren(navController = navController)
         }
         // Anadir mas composable destinations
     }
