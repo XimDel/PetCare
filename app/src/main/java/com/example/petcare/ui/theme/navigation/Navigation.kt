@@ -34,6 +34,7 @@ fun AppNavigation() {
         composable(Screen.OwnerLoginPage.route) {
             OwnerLoginPage(navController = navController)
         }
-        // Anadir mas composable destinations
+        // Colocar mas pantallas
+
     }
 }
