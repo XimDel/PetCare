@@ -19,4 +19,6 @@
     <string name="petcare_vet">PetCare Vet</string>
     <string name="vet_qr_code">VetCódigo</string>
     <string name="vet_pet_qr_code">PetCódigo</string>
+    <string name="qr_code_scanner">QR Code</string>
+    <string name="qr_code_scanner_message">Coloca el código QR dentro del cuadro para escanearlo.</string>
 </resources>
