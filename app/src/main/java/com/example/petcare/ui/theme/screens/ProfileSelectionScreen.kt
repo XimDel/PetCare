@@ -96,7 +96,7 @@ fun ProfileSelectionScreen(navController: NavController) {
                 isSelected = selectedRole == "Veterinario",
                 onClick = {
                     selectedRole = "Veterinario"
-                    // Anadir cuando este veterinario screen
+                    navController.navigate(Screen.VetStartPage.route)
                 }
             )
         }
