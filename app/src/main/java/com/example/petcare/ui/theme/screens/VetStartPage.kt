@@ -37,7 +37,7 @@ fun VetStartPage(navController: NavController) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.inicio_background),
+            painter = painterResource(id = R.drawable.vet_background),
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -45,7 +45,7 @@ fun VetStartPage(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 12.dp, start = 10.dp, end = 60.dp),
+                .padding(top = 12.dp, start = 25.dp, end = 80.dp),
             contentAlignment = Alignment.Center
         ) {
             Row(
@@ -60,10 +60,10 @@ fun VetStartPage(navController: NavController) {
                         .padding(end = 12.dp)
                 )
                 Text(
-                    text = "PetCare",
-                    fontSize = 60.sp,
+                    text = "PetCare Vet",
+                    fontSize = 50.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF29978D),
+                    color = Color(0xFFA6CAEC),
                     textAlign = TextAlign.Center,
                     fontFamily = FontFamily.Default
                 )
@@ -77,8 +77,8 @@ fun VetStartPage(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.petcare_image_4),
-                contentDescription = "petcare_image_4",
+                painter = painterResource(id = R.drawable.petcare_image_5),
+                contentDescription = "petcare_image_5",
                 modifier = Modifier
                     .size(250.dp)
                     .align(Alignment.CenterHorizontally)
@@ -90,7 +90,7 @@ fun VetStartPage(navController: NavController) {
             ) {
                 RoleButtonVSP(
                     text = "Iniciar",
-                    color = Color(0xFFFFE599),
+                    color = Color(0xFFFFFFFF),
                     isSelected = selectedRole == "Iniciar",
                     onClick = {
                         selectedRole = "Iniciar"
@@ -100,7 +100,7 @@ fun VetStartPage(navController: NavController) {
 
                 RoleButtonVSP(
                     text = "Registrarse",
-                    color = Color(0xFFFFE599),
+                    color = Color(0xFFFFFFFF),
                     isSelected = selectedRole == "Registrarse",
                     onClick = {
                         selectedRole = "Registrarse"
@@ -135,7 +135,7 @@ fun RoleButtonVSP(
             text = text,
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF746334)
+            color = Color(0xFF193148)
         )
     }
 }
