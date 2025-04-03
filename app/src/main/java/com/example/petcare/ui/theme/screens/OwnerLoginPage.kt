@@ -155,7 +155,7 @@ fun CustomTextFields(
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color(0xFFFFC0CB),
             unfocusedBorderColor = Color(0xFFFFC0CB),
-            cursorColor = Color(0xFFF8A4B0),
+            cursorColor = Color(0xFFF8A5B1),
             containerColor = Color(0xFFFADCE4)
         )
     )
