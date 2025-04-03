@@ -139,7 +139,7 @@ fun CustomTextFields(
             focusedBorderColor = Color(0xFFFFC0CB),
             unfocusedBorderColor = Color(0xFFFFC0CB),
             cursorColor = Color(0xFFFFC0CB),
-            containerColor = Color(0xFFFFF0F5)
+            containerColor = Color(0xFFFADCE4)
         )
     )
     Spacer(modifier = Modifier.height(0.dp))
@@ -155,8 +155,8 @@ fun CustomTextFields(
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color(0xFFFFC0CB),
             unfocusedBorderColor = Color(0xFFFFC0CB),
-            cursorColor = Color(0xFFFFC0CB),
-            containerColor = Color(0xFFFFF0F5)
+            cursorColor = Color(0xFFF8A4B0),
+            containerColor = Color(0xFFFADCE4)
         )
     )
 }
