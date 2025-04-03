@@ -8,6 +8,7 @@ import com.example.petcare.ui.theme.screens.ProfileSelectionScreen
 import com.example.petcare.ui.theme.screens.WelcomePage
 import com.example.petcare.ui.theme.screens.OwnerStartPage
 import com.example.petcare.ui.theme.screens.OwnerLoginPage
+import com.example.petcare.ui.theme.screens.VetLoginPage
 import com.example.petcare.ui.theme.screens.VetStartPage
 
 sealed class Screen(val route: String) {
@@ -41,7 +42,7 @@ fun AppNavigation() {
             VetStartPage(navController = navController)
         }
         composable(Screen.VetLoginPage.route) {
-           //VetLoginPage(navController = navController)
+           VetLoginPage(navController = navController)
         }
         // Anadir mas composable destinations
     }

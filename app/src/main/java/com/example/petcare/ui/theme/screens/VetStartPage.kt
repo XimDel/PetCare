@@ -94,7 +94,7 @@ fun VetStartPage(navController: NavController) {
                     isSelected = selectedRole == "Iniciar",
                     onClick = {
                         selectedRole = "Iniciar"
-                        navController.navigate(Screen.OwnerLoginPage.route)
+                        navController.navigate(Screen.VetLoginPage.route)
                     }
                 )
 
