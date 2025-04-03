@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import com.example.petcare.ui.theme.ThreeElementHeader
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +17,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,42 +38,13 @@ import com.example.petcare.R
 fun BlogPostScreen() {
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
-                title = {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.blog_icon),
-                            contentDescription = "Blog logo",
-                            modifier = Modifier
-                                .size(48.dp)
-                        )
-
-                        Spacer(modifier = Modifier.width(16.dp))
-
-                        Text(
-                            text = "Blog de Salud",
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF7555a7),
-                            fontFamily = FontFamily.Default,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 40.sp,
-                            modifier = Modifier.wrapContentWidth()
-                        )
-
-                        Spacer(modifier = Modifier.width(16.dp))
-
-                        Image(
-                            painter = painterResource(id = R.drawable.logo),
-                            contentDescription = "Petcare logo",
-                            modifier = Modifier
-                                .size(48.dp)
-                        )
-                    }
-                }
+            ThreeElementHeader(
+                firstContentDescription = "Blog logo",
+                firstIcon = R.drawable.blog_icon,
+                firstText = "Blog de Salud",
+                colorFirstText = Color(0xFF7555a7),
+                secondIcon = R.drawable.logo,
+                SecondContentDescription = "Petcare logo"
             )
         }
     ) { innerPadding ->
@@ -82,9 +55,7 @@ fun BlogPostScreen() {
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-            item {
-                BlogHorizontalDivider()
-            }
+            item { BlogHorizontalDivider() }
 
             item {
                 Image(
@@ -96,9 +67,7 @@ fun BlogPostScreen() {
                 )
             }
 
-            item {
-                BlogHorizontalDivider()
-            }
+            item { BlogHorizontalDivider() }
 
             item {
                 Text(
