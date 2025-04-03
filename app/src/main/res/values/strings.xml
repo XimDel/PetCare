@@ -18,4 +18,5 @@
     </string>
     <string name="petcare_vet">PetCare Vet</string>
     <string name="vet_qr_code">VetCódigo</string>
+    <string name="vet_pet_qr_code">PetCódigo</string>
 </resources>
