@@ -13,12 +13,12 @@ import com.example.petcare.R
 @Preview(showBackground = true, showSystemUi = true)
 
 @Composable
-private fun PetCodePage() {
+private fun PetRegisterPage() {
     Box {
         Box(modifier = Modifier.fillMaxSize()) {
 
             Image(
-                painter = painterResource(id = R.drawable.backgroundcodepet),
+                painter = painterResource(id = R.drawable.backgroundpet),
                 contentDescription = "Fondo Blog de Salud",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
