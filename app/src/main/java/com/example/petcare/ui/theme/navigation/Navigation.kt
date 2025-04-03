@@ -14,6 +14,7 @@ sealed class Screen(val route: String) {
     object ProfileSelectionScreen : Screen("profileselectionscree")
     object OwnerStartPage : Screen("ownerstartpage")
     object OwnerLoginPage : Screen("ownerloginpage")
+    object VetStartPage : Screen("vetstartPage")
     // anadir aqui mas pantallas para navegacion
 }
 
@@ -33,6 +34,9 @@ fun AppNavigation() {
         }
         composable(Screen.OwnerLoginPage.route) {
             OwnerLoginPage(navController = navController)
+        }
+        composable(Screen.VetStartPage.route) {
+            //VetStartPage(navController = navController)
         }
         // Anadir mas composable destinations
     }
