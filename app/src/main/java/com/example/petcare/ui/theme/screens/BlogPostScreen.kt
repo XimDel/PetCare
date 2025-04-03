@@ -1,50 +1,39 @@
 package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import com.example.petcare.ui.theme.ThreeElementHeader
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.petcare.R
+import com.example.petcare.ui.theme.ThreeElementHeader
 
-@OptIn(ExperimentalMaterial3Api::class) // Anotación para usar Scaffold con ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun BlogPostScreen() {
     Scaffold(
         topBar = {
             ThreeElementHeader(
-                firstContentDescription = "Blog logo",
                 firstIcon = R.drawable.blog_icon,
+                firstContentDescription = "Blog icon",
                 firstText = "Blog de Salud",
                 colorFirstText = Color(0xFF7555a7),
                 secondIcon = R.drawable.logo,
-                SecondContentDescription = "Petcare logo"
+                secondContentDescription = "Petcare icon"
             )
         }
     ) { innerPadding ->
@@ -83,7 +72,7 @@ fun BlogPostScreen() {
 }
 
 @Composable
-fun BlogHorizontalDivider() {
+fun BlogHorizontalDivider() { //Divisor horizontal para el blog
     HorizontalDivider(
         thickness = 4.dp,
         color = Color(0xFF7555a7),

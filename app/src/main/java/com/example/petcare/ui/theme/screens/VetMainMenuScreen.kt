@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,7 +57,7 @@ fun VetMainMenuScreen(){
                 ThreeElementHeader(
                     firstIcon = R.drawable.house_icon,
                     firstContentDescription = "House icon",
-                    firstText = "PetCare Vet",
+                    firstText = stringResource(id = R.string.petcare_vet),
                     colorFirstText = Color(0xFF91d4cd),
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon"
