@@ -104,6 +104,11 @@ fun PetRegistry(navController: NavController) {
                         contentDescription = "petcare_image_6",
                         modifier = Modifier.fillMaxSize().zIndex(0f)
                     )
+                    Image(
+                        painter = painterResource(id = R.drawable.vet_code_qr_image),
+                        contentDescription = "qr_icon",
+                        modifier = Modifier.zIndex(0f).size(50.dp)
+                    )
                     Button(
                         onClick = {},
                         modifier = Modifier
