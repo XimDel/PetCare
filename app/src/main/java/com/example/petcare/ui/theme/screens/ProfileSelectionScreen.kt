@@ -82,7 +82,6 @@ fun ProfileSelectionScreen(navController: NavController) {
                 text = "Propietario",
                 color = Color(0xFFFFC1C1),
                 icon = R.drawable.first_pet_icon,
-                isSelected = selectedRole == "Propietario",
                 onClick = {
                     selectedRole = "Propietario"
                     navController.navigate(Screen.OwnerStartPage.route)
@@ -93,7 +92,6 @@ fun ProfileSelectionScreen(navController: NavController) {
                 text = "Veterinario",
                 color = Color(0xFFB0E0E6),
                 icon = R.drawable.first_vet_icon,
-                isSelected = selectedRole == "Veterinario",
                 onClick = {
                     selectedRole = "Veterinario"
                     // Anadir cuando este veterinario screen
@@ -108,7 +106,6 @@ fun RoleButtonFS(
     text: String,
     color: Color,
     icon: Int,
-    isSelected: Boolean,
     onClick: () -> Unit
 ) {
     Row(

@@ -11,7 +11,7 @@ import com.example.petcare.ui.theme.screens.OwnerLoginPage
 
 sealed class Screen(val route: String) {
     data object WelcomePage : Screen("welcomepage")
-    data object ProfileSelectionScreen : Screen("profileselectionscree")
+    data object ProfileSelectionScreen : Screen("profileselectionscreen")
     data object OwnerStartPage : Screen("ownerstartpage")
     data object OwnerLoginPage : Screen("ownerloginpage")
 }

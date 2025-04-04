@@ -102,7 +102,7 @@ fun OwnerStartPage(navController: NavController) {
                     color = Color(0xFFFFE599),
                     onClick = {
                         selectedRole = "Registrarse"
-                        // TODO: @Ximen -> anadir navegacion a registro
+                        // TODO: @Ximena -> anadir navegacion a registro
                     }
                 )
             }
@@ -120,7 +120,7 @@ fun RoleButtonIP(
         modifier = Modifier
             .fillMaxWidth(0.7f)
             .shadow(8.dp, shape = RoundedCornerShape(70.dp))
-            //  TODO: @Ximena, agregar borde
+            //  TODO: @Ximena -> agregar borde
             .background(color, RoundedCornerShape(70.dp))
             .clickable { onClick() }
             .padding(20.dp),
