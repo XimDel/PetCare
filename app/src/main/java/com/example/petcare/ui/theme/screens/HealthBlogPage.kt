@@ -109,7 +109,7 @@ fun HealthBlogPage() {
                             .padding(horizontal = 4.dp)
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.heath_blog_carrusel_2),
+                        painter = painterResource(id = R.drawable.health_blog_carrusel_2),
                         contentDescription = "Portada 3",
                         modifier = Modifier
                             .size(width = 110.dp, height = 140.dp)
