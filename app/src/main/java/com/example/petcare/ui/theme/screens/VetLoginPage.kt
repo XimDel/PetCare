@@ -32,13 +32,13 @@ import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewOwnerLoginPage() {
+fun VetLoginPage() {
     val navController = rememberNavController()
-    OwnerLoginPage(navController = navController)
+    VetLoginPage(navController = navController)
 }
 
 @Composable
-fun OwnerLoginPage(navController: NavController) {
+fun VetLoginPage(navController: NavController) {
     var selectedRole by remember { mutableStateOf<String?>(null) }
 
     var username by remember { mutableStateOf("") }
@@ -46,7 +46,7 @@ fun OwnerLoginPage(navController: NavController) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.inicio_background),
+            painter = painterResource(id = R.drawable.vet_background),
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -86,8 +86,8 @@ fun OwnerLoginPage(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.petcare_image_4),
-                contentDescription = "petcare_image_4",
+                painter = painterResource(id = R.drawable.petcare_image_5),
+                contentDescription = "petcare_image_5",
                 modifier = Modifier
                     .size(250.dp)
                     .align(Alignment.CenterHorizontally)
@@ -97,15 +97,15 @@ fun OwnerLoginPage(navController: NavController) {
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                CustomTextFields(
+                CustomTextFieldsVLP(
                     username = username,
                     onUsernameChange = { username = it },
                     password = password,
                     onPasswordChange = { password = it }
                 )
-                RoleButtonOLP(
+                RoleButtonVLP(
                     text = "Iniciar Sesión",
-                    color = Color(0xFFFFE599),
+                    color = Color(0xFFFFFFFF),
                     isSelected = selectedRole == "Iniciar Sesión",
                     onClick = {
                         selectedRole = "Iniciar Sesión"
@@ -121,7 +121,7 @@ fun OwnerLoginPage(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomTextFields(
+fun CustomTextFieldsVLP(
     username: String,
     onUsernameChange: (String) -> Unit,
     password: String,
@@ -136,10 +136,10 @@ fun CustomTextFields(
         modifier = Modifier.fillMaxWidth(0.7f),
         shape = RoundedCornerShape(20.dp),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color(0xFFFFC0CB),
-            unfocusedBorderColor = Color(0xFFFFC0CB),
-            cursorColor = Color(0xFFFFC0CB),
-            containerColor = Color(0xFFFADCE4)
+            focusedBorderColor = Color(0xFFFFFFFF),
+            unfocusedBorderColor = Color(0xFFFFFFFF),
+            cursorColor = Color(0xFFFFFFFF),
+            containerColor = Color(0xFFC1DDFD)
         )
     )
     Spacer(modifier = Modifier.height(0.dp))
@@ -153,17 +153,17 @@ fun CustomTextFields(
         modifier = Modifier.fillMaxWidth(0.7f),
         shape = RoundedCornerShape(20.dp),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color(0xFFFFC0CB),
-            unfocusedBorderColor = Color(0xFFFFC0CB),
-            cursorColor = Color(0xFFF8A5B1),
-            containerColor = Color(0xFFFADCE4)
+            focusedBorderColor = Color(0xFFFFFFFF),
+            unfocusedBorderColor = Color(0xFFFAFAFA),
+            cursorColor = Color(0xFFFFFFFF),
+            containerColor = Color(0xFFC1DDFD)
         )
     )
 }
 
 
 @Composable
-fun RoleButtonOLP(
+fun RoleButtonVLP(
     text: String,
     color: Color,
     isSelected: Boolean,
@@ -173,7 +173,7 @@ fun RoleButtonOLP(
         modifier = Modifier
             .fillMaxWidth(0.6f)
             .shadow(8.dp, shape = RoundedCornerShape(70.dp))
-            .border(BorderStroke(2.dp, Color(0xFFE5D182)), RoundedCornerShape(70.dp))
+            .border(BorderStroke(2.dp, Color(0xFFA6CAEC)), RoundedCornerShape(70.dp))
             .background(color, RoundedCornerShape(70.dp))
             .clickable { onClick() }
             .padding(10.dp),
@@ -185,7 +185,7 @@ fun RoleButtonOLP(
             text = text,
             fontSize = 27.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF746334)
+            color = Color(0xFF193148)
         )
     }
 }

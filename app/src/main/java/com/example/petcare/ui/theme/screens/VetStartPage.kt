@@ -26,18 +26,18 @@ import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewOwnerStartPage() {
+fun PreviewVetStartPage() {
     val navController = rememberNavController()
-    OwnerStartPage(navController = navController)
+    VetStartPage(navController = navController)
 }
 
 @Composable
-fun OwnerStartPage(navController: NavController) {
+fun VetStartPage(navController: NavController) {
     var selectedRole by remember { mutableStateOf<String?>(null) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.inicio_background),
+            painter = painterResource(id = R.drawable.vet_background),
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -45,7 +45,7 @@ fun OwnerStartPage(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 12.dp, start = 10.dp, end = 60.dp),
+                .padding(top = 12.dp, start = 25.dp, end = 80.dp),
             contentAlignment = Alignment.Center
         ) {
             Row(
@@ -60,10 +60,10 @@ fun OwnerStartPage(navController: NavController) {
                         .padding(end = 12.dp)
                 )
                 Text(
-                    text = "PetCare",
-                    fontSize = 60.sp,
+                    text = "PetCare Vet",
+                    fontSize = 50.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF29978D),
+                    color = Color(0xFFA6CAEC),
                     textAlign = TextAlign.Center,
                     fontFamily = FontFamily.Default
                 )
@@ -77,8 +77,8 @@ fun OwnerStartPage(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.petcare_image_4),
-                contentDescription = "petcare_image_4",
+                painter = painterResource(id = R.drawable.petcare_image_5),
+                contentDescription = "petcare_image_5",
                 modifier = Modifier
                     .size(250.dp)
                     .align(Alignment.CenterHorizontally)
@@ -88,21 +88,23 @@ fun OwnerStartPage(navController: NavController) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                RoleButtonOSP(
+                RoleButtonVSP(
                     text = "Iniciar",
-                    color = Color(0xFFFFE599),
+                    color = Color(0xFFFFFFFF),
+                    isSelected = selectedRole == "Iniciar",
                     onClick = {
                         selectedRole = "Iniciar"
-                        navController.navigate(Screen.OwnerLoginPage.route)
+                        navController.navigate(Screen.VetLoginPage.route)
                     }
                 )
 
-                RoleButtonOSP(
+                RoleButtonVSP(
                     text = "Registrarse",
-                    color = Color(0xFFFFE599),
+                    color = Color(0xFFFFFFFF),
+                    isSelected = selectedRole == "Registrarse",
                     onClick = {
                         selectedRole = "Registrarse"
-                        // TODO: @Ximena -> anadir navegacion a registro
+                        // añadir navegacion a registro
                     }
                 )
             }
@@ -111,16 +113,17 @@ fun OwnerStartPage(navController: NavController) {
 }
 
 @Composable
-fun RoleButtonOSP(
+fun RoleButtonVSP(
     text: String,
     color: Color,
+    isSelected: Boolean,
     onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth(0.7f)
             .shadow(8.dp, shape = RoundedCornerShape(70.dp))
-            //  TODO: @Ximena -> agregar borde
+            //.border(BorderStroke(2.dp, Color(0xFFFFE599)), RoundedCornerShape(70.dp)) anadir borde
             .background(color, RoundedCornerShape(70.dp))
             .clickable { onClick() }
             .padding(20.dp),
@@ -132,7 +135,7 @@ fun RoleButtonOSP(
             text = text,
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF746334)
+            color = Color(0xFF193148)
         )
     }
 }
