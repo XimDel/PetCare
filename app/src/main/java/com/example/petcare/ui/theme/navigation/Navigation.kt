@@ -1,4 +1,4 @@
-package com.example.petcare.ui.theme
+package com.example.petcare.ui.theme.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
@@ -10,11 +10,10 @@ import com.example.petcare.ui.theme.screens.OwnerStartPage
 import com.example.petcare.ui.theme.screens.OwnerLoginPage
 
 sealed class Screen(val route: String) {
-    object WelcomePage : Screen("welcomepage")
-    object ProfileSelectionScreen : Screen("profileselectionscree")
-    object OwnerStartPage : Screen("ownerstartpage")
-    object OwnerLoginPage : Screen("ownerloginpage")
-    // anadir aqui mas pantallas para navegacion
+    data object WelcomePage : Screen("welcomepage")
+    data object ProfileSelectionScreen : Screen("profileselectionscree")
+    data object OwnerStartPage : Screen("ownerstartpage")
+    data object OwnerLoginPage : Screen("ownerloginpage")
 }
 
 @Composable
@@ -32,8 +31,7 @@ fun AppNavigation() {
             OwnerStartPage(navController = navController)
         }
         composable(Screen.OwnerLoginPage.route) {
-            OwnerLoginPage(navController = navController)
+            OwnerLoginPage()
         }
-        // Anadir mas composable destinations
     }
 }
