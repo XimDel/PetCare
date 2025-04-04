@@ -30,8 +30,7 @@ fun ScannerQRCodeScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(color = 0xFF193248))
-            .background(Color.Black.copy(alpha = 0.4f)) // Oscurece el fondo de la pantalla
+            .background(Color(color = 0xFF0E1F29))
     ) {
         Scaffold(
             topBar = {
