@@ -20,7 +20,6 @@ sealed class Screen(val route: String) {
     object VetStartPage : Screen("vetstartpage")
     object VetLoginPage : Screen("vetloginpage")
     // anadir aqui mas pantallas para navegacion
-    object PetRegistry : Screen("petregistry")
 }
 
 @Composable
@@ -45,9 +44,6 @@ fun AppNavigation() {
         }
         composable(Screen.VetLoginPage.route) {
            VetLoginPage(navController = navController)
-        }
-        composable(Screen.PetRegistry.route) {
-            //PetRegistry(navController = navController)
         }
         // Anadir mas composable destinations
     }
