@@ -104,7 +104,7 @@ fun VetStartPage(navController: NavController) {
                     isSelected = selectedRole == "Registrarse",
                     onClick = {
                         selectedRole = "Registrarse"
-                        // anadir navegacion a registro
+                        // añadir navegacion a registro
                     }
                 )
             }
