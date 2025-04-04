@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.navigation.Screen
+import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
