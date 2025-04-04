@@ -125,7 +125,7 @@ fun HomeScreen() {
             ) {
                 IconButton(R.drawable.logo_home)
                 IconButton(R.drawable.logo)
-                IconButton(R.drawable.logo_senttings)
+                IconButton(R.drawable.logo_settings)
             }
         }
     }
