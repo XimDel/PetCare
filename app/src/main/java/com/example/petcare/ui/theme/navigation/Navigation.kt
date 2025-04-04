@@ -31,7 +31,7 @@ fun AppNavigation() {
             OwnerStartPage(navController = navController)
         }
         composable(Screen.OwnerLoginPage.route) {
-            OwnerLoginPage()
+            OwnerLoginPage(navController = navController)
         }
     }
 }
