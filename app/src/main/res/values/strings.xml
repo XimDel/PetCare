@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">PetCare</string>
+    <string name="blog_text">
+        El cuidado de la salud de tu mascota es fundamental para garantizar su bienestar y felicidad.
+        En PetCare, te brindamos información sobre las mejores prácticas para el cuidado de tu amigo peludo.
+
+        Mantener un calendario de vacunas actualizado es una de las responsabilidades más importantes.
+        Las vacunas protegen contra enfermedades graves como la rabia, el moquillo y el parvovirus.
+        Consulta con tu veterinario para establecer un plan de vacunación adecuado.
+
+        Además, la alimentación es clave en la salud de tu mascota. Una dieta equilibrada, rica en nutrientes
+        esenciales, ayuda a fortalecer su sistema inmunológico y a mantener su energía. Recuerda evitar alimentos
+        peligrosos como el chocolate, las uvas y la cebolla, ya que pueden ser tóxicos.
+
+        Otro aspecto importante es la actividad física. Los paseos diarios y el juego no solo mantienen
+        en forma a tu mascota, sino que también mejoran su estado de ánimo y reducen el estrés.
+        Dedicar tiempo a jugar con ellos fortalece el vínculo y mejora su calidad de vida.
+    </string>
+    <string name="petcare_vet">PetCare Vet</string>
+    <string name="vet_qr_code">VetCódigo</string>
+    <string name="vet_pet_qr_code">PetCódigo</string>
+    <string name="qr_code_scanner">QR Code</string>
+    <string name="qr_code_scanner_message">Coloca el código QR dentro del cuadro para escanearlo.</string>
+    <string name="register_vet">Registro</string>
+    <string name="register_vet_name">Nombre Veterinaria</string>
 </resources>
