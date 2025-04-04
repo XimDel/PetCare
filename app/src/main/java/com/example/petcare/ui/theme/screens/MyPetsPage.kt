@@ -111,7 +111,7 @@ fun MyPetsPage() {
     }
 }
 
-// 🐾 Tarjeta grande superior
+// Tarjeta grande superior
 @Composable
 fun PetCardLarge(nombre: String, imageRes: Int) {
     Box(
@@ -144,7 +144,7 @@ fun PetCardLarge(nombre: String, imageRes: Int) {
     }
 }
 
-// 🐶 Tarjetas pequeñas con texto
+// Tarjetas pequeñas con texto
 @Composable
 fun PetCardSmall(nombre: String, imageRes: Int, modifier: Modifier = Modifier) {
     Column(
@@ -173,7 +173,7 @@ fun PetCardSmall(nombre: String, imageRes: Int, modifier: Modifier = Modifier) {
     }
 }
 
-// ➕ Tarjeta de agregar
+// Tarjeta de agregar
 @Composable
 fun AddPetCard(modifier: Modifier = Modifier) {
     Box(
