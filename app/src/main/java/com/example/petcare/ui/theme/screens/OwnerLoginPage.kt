@@ -134,7 +134,7 @@ fun CustomTextFields(
         singleLine = true,
         textStyle = androidx.compose.ui.text.TextStyle(fontSize = 19.sp),
         modifier = Modifier.fillMaxWidth(0.7f),
-        shape = RoundedCornerShape(20.dp),  
+        shape = RoundedCornerShape(20.dp),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color(0xFFFFC0CB),
             unfocusedBorderColor = Color(0xFFFFC0CB),

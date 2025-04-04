@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -91,7 +91,6 @@ fun OwnerStartPage(navController: NavController) {
                 RoleButtonOSP(
                     text = "Iniciar",
                     color = Color(0xFFFFE599),
-                    isSelected = selectedRole == "Iniciar",
                     onClick = {
                         selectedRole = "Iniciar"
                         navController.navigate(Screen.OwnerLoginPage.route)
@@ -101,10 +100,9 @@ fun OwnerStartPage(navController: NavController) {
                 RoleButtonOSP(
                     text = "Registrarse",
                     color = Color(0xFFFFE599),
-                    isSelected = selectedRole == "Registrarse",
                     onClick = {
                         selectedRole = "Registrarse"
-                        // anadir navegacion a registro
+                        // TODO: @Ximena -> anadir navegacion a registro
                     }
                 )
             }
@@ -116,14 +114,13 @@ fun OwnerStartPage(navController: NavController) {
 fun RoleButtonOSP(
     text: String,
     color: Color,
-    isSelected: Boolean,
     onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth(0.7f)
             .shadow(8.dp, shape = RoundedCornerShape(70.dp))
-            //.border(BorderStroke(2.dp, Color(0xFFFFE599)), RoundedCornerShape(70.dp)) anadir borde
+            //  TODO: @Ximena -> agregar borde
             .background(color, RoundedCornerShape(70.dp))
             .clickable { onClick() }
             .padding(20.dp),
