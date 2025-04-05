@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.petcare.ui.theme.Screen.VetRegistrationPage
+import com.example.petcare.ui.theme.screens.BlogPostScreen
 import com.example.petcare.ui.theme.screens.CalendarPage
 import com.example.petcare.ui.theme.screens.HealthBlogPage
 import com.example.petcare.ui.theme.screens.HomeScreen
@@ -15,13 +17,15 @@ import com.example.petcare.ui.theme.screens.VetLoginPage
 import com.example.petcare.ui.theme.screens.VetStartPage
 import com.example.petcare.ui.theme.screens.MyPetsPage
 import com.example.petcare.ui.theme.screens.PetCodePage
+import com.example.petcare.ui.theme.screens.PetCodePageP
+import com.example.petcare.ui.theme.screens.PetCodePageV
 import com.example.petcare.ui.theme.screens.PetHistoryPage
 import com.example.petcare.ui.theme.screens.PetQRCode
 import com.example.petcare.ui.theme.screens.PetRegistry
-//import com.example.petcare.ui.theme.screens.PetRegisterPage
-
-
-//import com.example.petcare.ui.theme.screens.PetRegistry
+import com.example.petcare.ui.theme.screens.ScannerQRCodeScreen
+import com.example.petcare.ui.theme.screens.VetCodeScreen
+import com.example.petcare.ui.theme.screens.VetMainMenuScreen
+import com.example.petcare.ui.theme.screens.VetRegistrationScreen
 
 sealed class Screen(val route: String) {
     object WelcomePage : Screen("welcomepage")
@@ -38,6 +42,13 @@ sealed class Screen(val route: String) {
     object HealthBlogPage: Screen("healthblogpage")
     object PetQRCode: Screen("petqrcode")
     object PetRegisterPage: Screen("petregisterpage")
+    object BlogPostScreen: Screen("blogpostscreen")
+    object ScannerQRCodeScreen: Screen("scannerqrcodescreen")
+    object VetRegisterPage: Screen("vetregisterpage")
+    object VetRegistrationPage: Screen("vetregistrationpage")
+    object VetCodeScreen: Screen("vetcodescreen")
+    object VetMainMenuScreen: Screen("vetmainmenuscreen")
+    object AddPetVetPage: Screen("addpetvetpage")
     // anadir aqui mas pantallas para navegacion
 }
 
@@ -87,6 +98,27 @@ fun AppNavigation() {
         }
         composable(Screen.PetRegisterPage.route) {
             PetCodePage(navController = navController)
+        }
+        composable(Screen.BlogPostScreen.route) {
+            BlogPostScreen(navController = navController)
+        }
+        composable(Screen.ScannerQRCodeScreen.route) {
+            ScannerQRCodeScreen(navController = navController)
+        }
+        composable(Screen.VetRegisterPage.route) {
+            PetCodePageV(navController = navController)
+        }
+        composable(Screen.VetRegistrationPage.route) {
+            VetRegistrationScreen(navController = navController)
+        }
+        composable(Screen.VetCodeScreen.route) {
+            VetCodeScreen(navController = navController)
+        }
+        composable(Screen.VetMainMenuScreen.route) {
+            VetMainMenuScreen(navController = navController)
+        }
+        composable(Screen.AddPetVetPage.route) {
+            PetCodePageP(navController = navController)
         }
         // Anadir mas composable destinations
     }

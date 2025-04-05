@@ -104,7 +104,7 @@ fun VetStartPage(navController: NavController) {
                     isSelected = selectedRole == "Registrarse",
                     onClick = {
                         selectedRole = "Registrarse"
-                        // añadir navegacion a registro
+                        navController.navigate(Screen.VetRegisterPage.route)
                     }
                 )
             }

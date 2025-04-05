@@ -120,7 +120,7 @@ fun RoleButtonOSP(
         modifier = Modifier
             .fillMaxWidth(0.7f)
             .shadow(8.dp, shape = RoundedCornerShape(70.dp))
-            //  TODO: @Ximena -> agregar borde
+            //agregar borde
             .background(color, RoundedCornerShape(70.dp))
             .clickable { onClick() }
             .padding(20.dp),
