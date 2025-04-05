@@ -26,11 +26,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun CalendarPage() {
+fun PreviewCalendarPage() {
+    val navController = rememberNavController()
+    CalendarPage(navController = navController)
+}
+
+@Composable
+fun CalendarPage(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         // Fondo
         Image(

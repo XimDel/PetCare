@@ -31,11 +31,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PetHistoryPage() {
+fun PreviewPetHistoryPage() {
+    val navController = rememberNavController()
+    PetHistoryPage(navController = navController)
+}
+
+@Composable
+fun PetHistoryPage(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         // Fondo completo
         Image(

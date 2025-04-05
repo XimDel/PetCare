@@ -30,7 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewOwnerLoginPage() {
     val navController = rememberNavController()
@@ -111,7 +111,7 @@ fun OwnerLoginPage(navController: NavController) {
                         selectedRole = "Iniciar Sesión"
                         // Chequear base de datos.
                         // Si es correcto, navegar a la HomePage:
-                        // navController.navigate(Screen.HomePage.route)
+                        navController.navigate(Screen.MyPetsPage.route)
                     }
                 )
             }
@@ -161,13 +161,12 @@ fun CustomTextFields(
     )
 }
 
-
 @Composable
 fun RoleButtonOLP(
     text: String,
     color: Color,
     isSelected: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit   // Cambiado a () -> Unit
 ) {
     Row(
         modifier = Modifier
