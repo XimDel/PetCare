@@ -33,11 +33,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun MyPetsPage() {
+fun PreviewMyPetsPage() {
+    val navController = rememberNavController()
+    MyPetsPage(navController = navController)
+}
+
+@Composable
+fun MyPetsPage(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         // Fondo
         Image(
@@ -84,8 +93,14 @@ fun MyPetsPage() {
                 )
             }
 
-            // Imagen principal
-            PetCardLarge("Luna", R.drawable.mypets_pet_1)
+            // Tarjeta grande: "Luna"
+            PetCardLarge(
+                nombre = "Luna",
+                imageRes = R.drawable.mypets_pet_1,
+                onClick = {
+                    navController.navigate(Screen.HomePetPage.route)
+                }
+            )
             Spacer(modifier = Modifier.height(20.dp))
 
             // Cuadros pequeños
@@ -111,15 +126,21 @@ fun MyPetsPage() {
     }
 }
 
+
 // Tarjeta grande superior
 @Composable
-fun PetCardLarge(nombre: String, imageRes: Int) {
+fun PetCardLarge(
+    nombre: String,
+    imageRes: Int,
+    onClick: () -> Unit = {}
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(3f / 2f)
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White),
+            .background(Color.White)
+            .clickable { onClick() },
         contentAlignment = Alignment.BottomCenter
     ) {
         Image(
@@ -143,6 +164,7 @@ fun PetCardLarge(nombre: String, imageRes: Int) {
         }
     }
 }
+
 
 // Tarjetas pequeñas con texto
 @Composable

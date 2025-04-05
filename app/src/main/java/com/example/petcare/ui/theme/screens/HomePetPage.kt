@@ -2,6 +2,7 @@ package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,11 +20,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun HomeScreen() {
+fun PreviewHomePetPage() {
+    val navController = rememberNavController()
+    HomeScreen(navController = navController)
+}
+
+@Composable
+fun HomeScreen(navController: NavHostController) {
 
     val petName = "Nombre"
 
@@ -104,21 +114,36 @@ fun HomeScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                HomeOption(icon = R.drawable.homepage_register, label = "Registro")
-                HomeOption(icon = R.drawable.homepage_history, label = "Historial")
+                HomeOption(
+                    icon = R.drawable.homepage_register,
+                    label = "Registro",
+                    onClick = { navController.navigate(Screen.PetRegistry.route) }
+                )
+                HomeOption(
+                    icon = R.drawable.homepage_history,
+                    label = "Historial",
+                    onClick = { navController.navigate(Screen.PetHistoryPage.route) }
+                )
             }
             Spacer(modifier = Modifier.height(16.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                HomeOption(icon = R.drawable.homepage_calendar, label = "Calendario")
-                HomeOption(icon = R.drawable.homepage_blog, label = "Blog")
+                HomeOption(
+                    icon = R.drawable.homepage_calendar,
+                    label = "Calendario",
+                    onClick = { navController.navigate(Screen.CalendarPage.route) }
+                )
+                HomeOption(
+                    icon = R.drawable.homepage_blog,
+                    label = "Blog",
+                    onClick = { navController.navigate(Screen.HealthBlogPage.route) }
+                )
             }
 
             Spacer(modifier = Modifier.height(80.dp))
 
-            // Íconos inferiores
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
@@ -131,15 +156,17 @@ fun HomeScreen() {
     }
 }
 
+
 @Composable
-fun HomeOption(icon: Int, label: String) {
+fun HomeOption(icon: Int, label: String, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .size(140.dp)
             .clip(RoundedCornerShape(34.dp))
             .background(Color(0xFFE0F7FA))
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center
     ) {
-
         Image(
             painter = painterResource(id = icon),
             contentDescription = label,
@@ -148,7 +175,6 @@ fun HomeOption(icon: Int, label: String) {
                 .padding(top = 16.dp)
                 .size(72.dp)
         )
-
         Text(
             text = label,
             fontSize = 18.sp,
@@ -163,6 +189,7 @@ fun HomeOption(icon: Int, label: String) {
         )
     }
 }
+
 
 @Composable
 fun IconButton(icon: Int) {
