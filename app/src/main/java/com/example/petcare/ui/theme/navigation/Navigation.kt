@@ -14,8 +14,12 @@ import com.example.petcare.ui.theme.screens.OwnerLoginPage
 import com.example.petcare.ui.theme.screens.VetLoginPage
 import com.example.petcare.ui.theme.screens.VetStartPage
 import com.example.petcare.ui.theme.screens.MyPetsPage
+import com.example.petcare.ui.theme.screens.PetCodePage
 import com.example.petcare.ui.theme.screens.PetHistoryPage
+import com.example.petcare.ui.theme.screens.PetQRCode
 import com.example.petcare.ui.theme.screens.PetRegistry
+//import com.example.petcare.ui.theme.screens.PetRegisterPage
+
 
 //import com.example.petcare.ui.theme.screens.PetRegistry
 
@@ -32,6 +36,8 @@ sealed class Screen(val route: String) {
     object PetHistoryPage: Screen("pethistorypage")
     object CalendarPage: Screen("calendarpage")
     object HealthBlogPage: Screen("healthblogpage")
+    object PetQRCode: Screen("petqrcode")
+    object PetRegisterPage: Screen("petregisterpage")
     // anadir aqui mas pantallas para navegacion
 }
 
@@ -75,6 +81,12 @@ fun AppNavigation() {
         }
         composable(Screen.HealthBlogPage.route) {
             HealthBlogPage(navController = navController)
+        }
+        composable(Screen.PetQRCode.route) {
+            PetQRCode(navController = navController)
+        }
+        composable(Screen.PetRegisterPage.route) {
+            PetCodePage(navController = navController)
         }
         // Anadir mas composable destinations
     }
