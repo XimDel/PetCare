@@ -114,14 +114,12 @@ fun VetMainMenuScreen(navController: NavController) {
                 VetMainMenuButton(
                     buttonIcon = Icons.Default.Search,
                     buttonText = "Ver Mascota",
-                    onClick = {}
-                    //Agregar ver mascota navigation
+                    onClick = { navController.navigate(Screen.SearchPetScreen.route) }
                 )
                 VetMainMenuButton(
                     buttonIcon = Icons.Default.Info,
                     buttonText = "Historial de Mascotas",
-                    onClick = {}
-                    //Agregar historial navigation
+                    onClick = { navController.navigate(Screen.PetHistoryVet.route) }
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))

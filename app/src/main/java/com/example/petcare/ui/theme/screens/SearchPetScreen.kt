@@ -2,6 +2,7 @@ package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,16 +26,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun SearchPetScreenPreview() {
-    SearchPetScreen()
+    val navController = rememberNavController()
+    SearchPetScreen(navController)
 }
 
 @Composable
-fun SearchPetScreen() {
+fun SearchPetScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -54,7 +59,11 @@ fun SearchPetScreen() {
                 Image(
                     painter = painterResource(id = R.drawable.logo_home),
                     contentDescription = null,
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clickable {
+                            navController.navigate(Screen.HomePetPage.route)
+                        },
                 )
                 Text(
                     text = "PetCare Vet",
@@ -159,7 +168,11 @@ fun SearchPetScreen() {
             Image(
                 painter = painterResource(id = R.drawable.logo_home),
                 contentDescription = null,
-                modifier = Modifier.size(50.dp)
+                modifier = Modifier
+                    .size(50.dp)
+                    .clickable {
+                        navController.navigate(Screen.HomePetPage.route)
+                    },
             )
         }
     }
