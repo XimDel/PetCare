@@ -271,7 +271,7 @@ fun PetCard(
             modifier = Modifier
                 .weight(1f)
                 .clickable {
-                    navController.navigate("ruta_destino")
+                    navController.navigate(Screen.ViePetVet.route)
                 }
         ) {
             Text(
