@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -135,7 +135,8 @@ fun RoleButtonFx(
     onClick: () -> Unit,
 ) {
     Row(
-        modifier = Modifier.clickable { onClick() }
+        modifier = Modifier
+            .clickable { onClick() }
             .fillMaxWidth(0.9f)
             .shadow(8.dp, shape = RoundedCornerShape(90.dp))
             .background(color, RoundedCornerShape(90.dp))

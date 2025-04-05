@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -95,7 +95,7 @@ fun PetCodePageV(navController: NavController) {
             ) {
                 Spacer(modifier = Modifier.height(1.dp))
                 RoleButtonFd(
-                    text  = "Agregar Veterinario existente",
+                    text = "Agregar Veterinario existente",
                     color = Color(0xFFA4C8E1),
                     icon = R.drawable.first_vet_icon,
                     navController = navController
@@ -110,7 +110,7 @@ fun PetCodePageV(navController: NavController) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 RoleButtonFc(
-                    text  = " Registrar Nuevo Veterinario ",
+                    text = " Registrar Nuevo Veterinario ",
                     color = Color(0xFFA4C8E1),
                     icon = R.drawable.first_vet_icon,
                     onClick = {

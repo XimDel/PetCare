@@ -84,18 +84,19 @@ fun PetCodePageP(navController: NavController) {
             )
         }
         Box(modifier = Modifier.fillMaxSize()) {
-            Column (modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 180.dp,start = 35.dp),
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 180.dp, start = 35.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top){
+                verticalArrangement = Arrangement.Top
+            ) {
                 Spacer(modifier = Modifier.height(1.dp))
                 RoleButtonFz(
-                    text  = "Agregar Mascota existente",
+                    text = "Agregar Mascota existente",
                     color = Color(0xFFA4C8E1),
                     icon = R.drawable.peticonprincipal
                 )
-
 
 
             }
@@ -106,9 +107,9 @@ fun PetCodePageP(navController: NavController) {
                     .align(Alignment.TopCenter),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
-            ){
+            ) {
                 RoleButtonFy(
-                    text  = "Agregar Nueva Mascota",
+                    text = "Agregar Nueva Mascota",
                     color = Color(0xFFA4C8E1),
                     icon = R.drawable.peticonprincipal
 
@@ -130,6 +131,7 @@ fun PetCodePageP(navController: NavController) {
 
     }
 }
+
 @Composable
 fun RoleButtonFy(
     text: String,
@@ -162,6 +164,7 @@ fun RoleButtonFy(
 
     }
 }
+
 @Composable
 fun RoleButtonFz(
     text: String,

@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -108,7 +108,7 @@ fun HealthBlogPage(navController: NavHostController) {
                         modifier = Modifier
                             .size(width = 110.dp, height = 140.dp)
                             .padding(horizontal = 4.dp)
-                            .clickable { navController.navigate(Screen.BlogPostScreen.route)  }
+                            .clickable { navController.navigate(Screen.BlogPostScreen.route) }
                         //modificar segun database de articulos
                     )
                     Image(
@@ -117,7 +117,7 @@ fun HealthBlogPage(navController: NavHostController) {
                         modifier = Modifier
                             .size(width = 110.dp, height = 140.dp)
                             .padding(horizontal = 4.dp)
-                            .clickable { navController.navigate(Screen.BlogPostScreen.route)  }
+                            .clickable { navController.navigate(Screen.BlogPostScreen.route) }
                     )
                     Image(
                         painter = painterResource(id = R.drawable.health_blog_carrusel_2),
@@ -125,7 +125,7 @@ fun HealthBlogPage(navController: NavHostController) {
                         modifier = Modifier
                             .size(width = 110.dp, height = 140.dp)
                             .padding(horizontal = 4.dp)
-                            .clickable { navController.navigate(Screen.BlogPostScreen.route)  }
+                            .clickable { navController.navigate(Screen.BlogPostScreen.route) }
                     )
                 }
                 Spacer(modifier = Modifier.width(8.dp))

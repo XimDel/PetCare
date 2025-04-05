@@ -62,7 +62,7 @@ fun ThreeElementHeader(
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                if(useBoxForTitle){
+                if (useBoxForTitle) {
                     Box(
                         modifier = Modifier
                             .padding(top = 8.dp) // Agrega espacio arriba para separarlo del borde superior
