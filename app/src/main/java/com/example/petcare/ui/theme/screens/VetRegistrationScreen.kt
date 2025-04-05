@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,12 +40,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 import com.example.petcare.ui.theme.ThreeElementHeader
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun VetRegistrationScreen() {
+fun PreviewVetRegistrationPage() {
+    val navController = rememberNavController()
+    VetRegistrationScreen(navController = navController)
+}
+
+@Composable
+fun VetRegistrationScreen(navController: NavHostController) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -81,7 +91,7 @@ fun VetRegistrationScreen() {
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .padding(top = 24.dp, bottom = 8.dp)
-                            .size(370.dp)
+                            .size(350.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.vet_code_qr_image),
@@ -89,7 +99,8 @@ fun VetRegistrationScreen() {
                         modifier = Modifier
                             .size(80.dp)
                             .align(Alignment.TopStart) // Lo posiciona arriba a la izquierda
-                        .padding(top = 32.dp)
+                            .padding(top = 32.dp)
+                            .clickable { navController.navigate(Screen.VetCodeScreen.route) }
                     )
                 }
                 Box(
@@ -117,7 +128,7 @@ fun VetRegistrationScreen() {
                     Box( // Contenedor para el "formulario" de registro
                         modifier = Modifier
                             .wrapContentHeight()
-                            .padding(16.dp)
+                            .padding(5.dp)
                             .border(2.dp, Color(0xFF999999), shape = RoundedCornerShape(4.dp))
                             .background(color = Color.White, shape = RoundedCornerShape(4.dp))
                     ) {

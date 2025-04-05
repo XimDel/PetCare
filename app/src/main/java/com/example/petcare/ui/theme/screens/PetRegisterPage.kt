@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,12 +33,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewPetRegisterPage() {
+    val navController = rememberNavController()
+    PetCodePage(navController = navController)
+}
 
 @Composable
-private fun PetCodePage() {
+fun PetCodePage(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
 
         Image(
@@ -74,21 +83,21 @@ private fun PetCodePage() {
             )
         }
         Box(modifier = Modifier.fillMaxSize()) {
-            Column (modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 200.dp,start = 35.dp),
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 200.dp, start = 35.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top){
+                verticalArrangement = Arrangement.Top
+            ) {
                 Spacer(modifier = Modifier.height(1.dp))
                 RoleButtonFp(
-                    text  = "Agregar Mascota existente",
+                    text = "Agregar Mascota existente",
                     color = Color(0xFFFFC1C1),
-                    icon = R.drawable.first_pet_icon
+                    icon = R.drawable.first_pet_icon,
+                    navController = navController  // Pasamos navController
                 )
-
-
-
-        }
+            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -96,42 +105,37 @@ private fun PetCodePage() {
                     .align(Alignment.TopCenter),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
-            ){
+            ) {
                 RoleButtonFx(
-                    text  = " Registrar Nueva Mascota   ",
+                    text = " Registrar Nueva Mascota   ",
                     color = Color(0xFFFFC1C1),
-                    icon = R.drawable.first_pet_icon
-
-
+                    icon = R.drawable.first_pet_icon,
+                    onClick = {
+                        navController.navigate(Screen.PetRegistry.route)
+                    }
                 )
-
             }
-
-
-
-
-
+            Image(
+                painter = painterResource(id = R.drawable.homepage),
+                contentDescription = "home",
+                modifier = Modifier
+                    .size(135.dp)
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 80.dp)
+            )
         }
-        Image(
-            painter = painterResource(id = R.drawable.homepage),
-            contentDescription = "home",
-            modifier = Modifier
-                .size(135.dp)
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 80.dp)
-        )
-
     }
 }
+
 @Composable
 fun RoleButtonFx(
     text: String,
     color: Color,
     icon: Int,
-    modifier: Modifier = Modifier
+    onClick: () -> Unit,
 ) {
     Row(
-        modifier = Modifier
+        modifier = Modifier.clickable { onClick() }
             .fillMaxWidth(0.9f)
             .shadow(8.dp, shape = RoundedCornerShape(90.dp))
             .background(color, RoundedCornerShape(90.dp))
@@ -150,16 +154,16 @@ fun RoleButtonFx(
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             color = Color.DarkGray
-
         )
-
     }
 }
+
 @Composable
 fun RoleButtonFp(
     text: String,
     color: Color,
     icon: Int,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -179,10 +183,10 @@ fun RoleButtonFp(
                 painter = painterResource(id = icon),
                 contentDescription = text,
                 modifier = Modifier
-                    .size(80.dp) // Aumenta solo el icono
-                    .clip(RoundedCornerShape(40)) // Mantiene bordes redondeados
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(40))
             )
-            Spacer(modifier = Modifier.padding(20.dp))
+            Spacer(modifier = Modifier.padding(10.dp))
             Text(
                 text = text,
                 fontSize = 30.sp,
@@ -193,13 +197,13 @@ fun RoleButtonFp(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // **Fila para alinear los botones horizontalmente**
+        // Fila para alinear los botones horizontalmente
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(
-                onClick = { /* Acción del primer botón */ },
+                onClick = { navController.navigate(Screen.ScannerQRCodeScreen.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
@@ -214,12 +218,12 @@ fun RoleButtonFp(
             Spacer(modifier = Modifier.width(10.dp))
 
             Button(
-                onClick = { /* Acción del segundo botón */ },
+                onClick = { navController.navigate(Screen.ScannerQRCodeScreen.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF0F0), // Naranja
+                    containerColor = Color(0xFFF0F0),
                     contentColor = Color.Black
                 )
             ) {
@@ -228,3 +232,4 @@ fun RoleButtonFp(
         }
     }
 }
+
