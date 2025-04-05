@@ -1,6 +1,7 @@
 package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -106,6 +108,8 @@ fun HealthBlogPage(navController: NavHostController) {
                         modifier = Modifier
                             .size(width = 110.dp, height = 140.dp)
                             .padding(horizontal = 4.dp)
+                            .clickable { navController.navigate(Screen.BlogPostScreen.route)  }
+                        //modificar segun database de articulos
                     )
                     Image(
                         painter = painterResource(id = R.drawable.health_blog_carrusel_3),
@@ -113,6 +117,7 @@ fun HealthBlogPage(navController: NavHostController) {
                         modifier = Modifier
                             .size(width = 110.dp, height = 140.dp)
                             .padding(horizontal = 4.dp)
+                            .clickable { navController.navigate(Screen.BlogPostScreen.route)  }
                     )
                     Image(
                         painter = painterResource(id = R.drawable.health_blog_carrusel_2),
@@ -120,6 +125,7 @@ fun HealthBlogPage(navController: NavHostController) {
                         modifier = Modifier
                             .size(width = 110.dp, height = 140.dp)
                             .padding(horizontal = 4.dp)
+                            .clickable { navController.navigate(Screen.BlogPostScreen.route)  }
                     )
                 }
                 Spacer(modifier = Modifier.width(8.dp))
