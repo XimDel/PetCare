@@ -31,6 +31,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -107,7 +108,9 @@ fun PetRegistry(navController: NavController) {
                     Image(
                         painter = painterResource(id = R.drawable.vet_code_qr_image),
                         contentDescription = "qr_icon",
-                        modifier = Modifier.zIndex(0f).size(50.dp)
+                        modifier = Modifier.zIndex(0f)
+                            .size(50.dp)
+                            .clickable { navController.navigate(Screen.PetQRCode.route) }
                     )
                     Button(
                         onClick = {},

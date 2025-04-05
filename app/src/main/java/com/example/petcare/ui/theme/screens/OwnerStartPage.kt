@@ -102,7 +102,7 @@ fun OwnerStartPage(navController: NavController) {
                     color = Color(0xFFFFE599),
                     onClick = {
                         selectedRole = "Registrarse"
-                        // TODO: @Ximena -> anadir navegacion a registro
+                        navController.navigate(Screen.PetRegisterPage.route)
                     }
                 )
             }

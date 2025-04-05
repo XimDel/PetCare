@@ -32,12 +32,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewPetRegisterPage() {
+    val navController = rememberNavController()
+    PetCodePage(navController = navController)
+}
 
 @Composable
-private fun PetCodePage() {
+fun PetCodePage(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
 
         Image(

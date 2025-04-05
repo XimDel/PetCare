@@ -28,11 +28,11 @@ import com.example.petcare.R
 @Composable
 fun PreviewPetQRCode() {
     val navController = rememberNavController()
-    PetPetQRCode(navController = navController)
+    PetQRCode(navController = navController)
 }
 
 @Composable
-fun PetPetQRCode(navController: NavController) {
+fun PetQRCode(navController: NavController) {
     var selectedRole by remember { mutableStateOf<String?>(null) }
 
     Box(modifier = Modifier.fillMaxSize()) {
