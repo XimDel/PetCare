@@ -109,9 +109,7 @@ fun VetLoginPage(navController: NavController) {
                     isSelected = selectedRole == "Iniciar Sesión",
                     onClick = {
                         selectedRole = "Iniciar Sesión"
-                        // Chequear base de datos.
-                        // Si es correcto, navegar a la HomePage:
-                        // navController.navigate(Screen.HomePage.route)
+                        navController.navigate(Screen.VetMainMenuScreen.route)
                     }
                 )
             }

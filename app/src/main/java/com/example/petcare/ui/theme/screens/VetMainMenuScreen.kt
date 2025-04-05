@@ -2,6 +2,7 @@ package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,12 +38,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 import com.example.petcare.ui.theme.ThreeElementHeader
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun VetMainMenuScreen(){
+fun PreviewVetMainMenuScreene() {
+    val navController = rememberNavController()
+    VetMainMenuScreen(navController = navController)
+}
+
+@Composable
+fun VetMainMenuScreen(navController: NavController){
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
@@ -95,9 +105,24 @@ fun VetMainMenuScreen(){
                         .offset(x = (50).dp) // Ajusta la imagen hacia el centro de forma horizontal
                         .offset(y = (24).dp) // Ajusta la imagen hacia abajo
                 )
-                VetMainMenuButton(buttonIcon = Icons.Default.Add, buttonText = "Agregar Mascota")
-                VetMainMenuButton(buttonIcon = Icons.Default.Search, buttonText = "Ver Mascota")
-                VetMainMenuButton(buttonIcon = Icons.Default.Info, buttonText = "Historial de Mascotas")
+                // Cada botón navega a Screen.AQUIPANTALLA.route al hacer click
+                VetMainMenuButton(
+                    buttonIcon = Icons.Default.Add,
+                    buttonText = "Agregar Mascota",
+                    onClick = { navController.navigate(Screen.AddPetVetPage.route) }
+                )
+                VetMainMenuButton(
+                    buttonIcon = Icons.Default.Search,
+                    buttonText = "Ver Mascota",
+                    onClick = {}
+                    //Agregar ver mascota navigation
+                )
+                VetMainMenuButton(
+                    buttonIcon = Icons.Default.Info,
+                    buttonText = "Historial de Mascotas",
+                    onClick = {}
+                    //Agregar historial navigation
+                )
 
                 Spacer(modifier = Modifier.height(24.dp))
 
@@ -117,11 +142,13 @@ fun VetMainMenuScreen(){
 @Composable
 fun VetMainMenuButton(
     buttonIcon: ImageVector,
-    buttonText: String
+    buttonText: String,
+    onClick: () -> Unit
 ){
     Box(
         modifier = Modifier
             .fillMaxWidth(0.9f)
+            .clickable { onClick() }
             .shadow(8.dp, shape = RoundedCornerShape(24.dp))
             .background(Color(0xFFa8ccec), shape = RoundedCornerShape(60.dp))
             .padding(horizontal = 16.dp, vertical = 16.dp)
@@ -132,7 +159,7 @@ fun VetMainMenuButton(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = buttonIcon, // Usa un ícono de Jetpack Compose
+                imageVector = buttonIcon,
                 contentDescription = "Icono de mascota",
                 tint = Color(0xFF1b344a),
                 modifier = Modifier.size(80.dp)
@@ -148,5 +175,5 @@ fun VetMainMenuButton(
             )
         }
     }
-    Spacer(modifier = Modifier.height(24.dp)) //Espacio para un mejor aspecto visual
+    Spacer(modifier = Modifier.height(24.dp))
 }

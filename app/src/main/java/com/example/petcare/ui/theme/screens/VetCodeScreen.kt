@@ -1,6 +1,7 @@
 package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,12 +18,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 import com.example.petcare.ui.theme.ThreeElementHeader
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun VetCodeScreen() {
+fun PreviewVetCodeScreen() {
+    val navController = rememberNavController()
+    VetCodeScreen(navController = navController)
+}
+
+@Composable
+fun VetCodeScreen(navController: NavController) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
