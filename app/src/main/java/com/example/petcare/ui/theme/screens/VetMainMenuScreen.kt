@@ -41,7 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 import com.example.petcare.ui.theme.ThreeElementHeader
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -52,7 +52,7 @@ fun PreviewVetMainMenuScreene() {
 }
 
 @Composable
-fun VetMainMenuScreen(navController: NavController){
+fun VetMainMenuScreen(navController: NavController) {
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
@@ -144,7 +144,7 @@ fun VetMainMenuButton(
     buttonIcon: ImageVector,
     buttonText: String,
     onClick: () -> Unit
-){
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth(0.9f)

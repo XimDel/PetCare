@@ -28,7 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true)
 @Composable
@@ -106,7 +106,6 @@ fun OwnerLoginPage(navController: NavController) {
                 RoleButtonOLP(
                     text = "Iniciar Sesión",
                     color = Color(0xFFFFE599),
-                    isSelected = selectedRole == "Iniciar Sesión",
                     onClick = {
                         selectedRole = "Iniciar Sesión"
                         // Chequear base de datos.
@@ -165,8 +164,7 @@ fun CustomTextFields(
 fun RoleButtonOLP(
     text: String,
     color: Color,
-    isSelected: Boolean,
-    onClick: () -> Unit   // Cambiado a () -> Unit
+    onClick: () -> Unit   // Cambiado a () -> Unit){}
 ) {
     Row(
         modifier = Modifier

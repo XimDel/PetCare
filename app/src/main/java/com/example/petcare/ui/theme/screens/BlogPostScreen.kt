@@ -72,7 +72,12 @@ fun BlogPostScreen(navController: NavHostController) {
                     fontSize = 16.sp,
                     textAlign = TextAlign.Justify,
                     color = Color(0xFF636363),
-                    modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 16.dp)
+                    modifier = Modifier.padding(
+                        start = 24.dp,
+                        end = 24.dp,
+                        top = 16.dp,
+                        bottom = 16.dp
+                    )
                 )
             }
         }

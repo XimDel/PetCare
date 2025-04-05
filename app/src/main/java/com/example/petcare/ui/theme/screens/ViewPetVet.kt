@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,20 +32,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true)
 @Composable
-fun PetHistoryScreenPreview() {
-    PetHistoryScreen()
+fun ViewPetVetPreview() {
+    val navController = rememberNavController()
+    ViePetVet(navController = navController)
 }
 
 @Composable
-fun PetHistoryScreen() {
+fun ViePetVet(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFDEFAFF)) // Fondo celeste claro
+            .background(Color(0xFFDEFAFF))
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -59,22 +64,25 @@ fun PetHistoryScreen() {
             ) {
                 // Home Icon
                 Image(
-                    painter = painterResource(id = R.drawable.logo_home), // <-- Tu icono Home aquí
+                    painter = painterResource(id = R.drawable.logo_home),
                     contentDescription = "Home Icon",
                     modifier = Modifier.size(40.dp)
+                        .clickable {
+                            navController.navigate(Screen.HomePetPage.route)
+                        },
                 )
 
                 // Título "Historial"
                 Text(
                     text = "Historial",
                     fontSize = 36.sp,
-                    color = Color(0xFF2A4D65), // Azul oscuro
+                    color = Color(0xFF2A4D65),
                     fontWeight = FontWeight.Bold
                 )
 
                 // Icono Salud
                 Image(
-                    painter = painterResource(id = R.drawable.logo), // <-- Tu icono de salud aquí
+                    painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Health Icon",
                     modifier = Modifier.size(40.dp)
                 )
@@ -88,7 +96,7 @@ fun PetHistoryScreen() {
                 contentAlignment = Alignment.Center
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.petcare_image_), // <-- Tu imagen de mascota aquí
+                    painter = painterResource(id = R.drawable.petcare_image_),
                     contentDescription = "Pet Image",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
@@ -125,7 +133,7 @@ fun PetHistoryScreen() {
                         .padding(horizontal = 20.dp, vertical = 8.dp)
                 ) {
                     Text(
-                        text = "Nombre", // <-- Aquí nombre de la mascota dinámico
+                        text = "Nombre",
                         fontSize = 24.sp,
                         color = Color(0xFF2A4D65),
                         fontWeight = FontWeight.Bold

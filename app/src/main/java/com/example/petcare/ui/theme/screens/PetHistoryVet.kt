@@ -2,6 +2,7 @@ package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,12 +37,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.ThreeElementHeader
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true)
 @Composable
-fun PetListScreen() {
+fun PetHistoryScreenPreview() {
+    val navController = rememberNavController()
+    PetHistoryVet(navController = navController)
+}
+
+@Composable
+fun PetHistoryVet(navController: NavHostController) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -49,7 +59,11 @@ fun PetListScreen() {
             painter = painterResource(id = R.drawable.backgroundvet),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable {
+                    navController.navigate(Screen.HomePetPage.route)
+                },
         )
         Scaffold(
             topBar = {
@@ -182,7 +196,8 @@ fun PetListScreen() {
                     breed = "Beagle",
                     type = "Perro",
                     lastVisit = "10/10/23",
-                    nextVisit = "11/10/23"
+                    nextVisit = "11/10/23",
+                    navController = navController
                 )
 
                 PetCard(
@@ -191,7 +206,8 @@ fun PetListScreen() {
                     breed = "Criollo",
                     type = "Gato",
                     lastVisit = "10/10/23",
-                    nextVisit = "11/10/23"
+                    nextVisit = "11/10/23",
+                    navController = navController
                 )
 
                 PetCard(
@@ -200,7 +216,8 @@ fun PetListScreen() {
                     breed = "Husky",
                     type = "Perro",
                     lastVisit = "10/10/23",
-                    nextVisit = "11/10/23"
+                    nextVisit = "11/10/23",
+                    navController = navController
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -227,7 +244,8 @@ fun PetCard(
     breed: String,
     type: String,
     lastVisit: String,
-    nextVisit: String
+    nextVisit: String,
+    navController: NavHostController
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -250,7 +268,11 @@ fun PetCard(
         Spacer(modifier = Modifier.width(12.dp))
 
         Column(
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
+                .clickable {
+                    navController.navigate("ruta_destino")
+                }
         ) {
             Text(
                 text = petName,

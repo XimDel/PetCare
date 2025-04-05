@@ -80,7 +80,7 @@ fun ScannerQRCodeScreen(navController: NavController) {
                         .size(350.dp)
                         .border(4.dp, Color.White, RoundedCornerShape(16.dp))
                         .background(Color.Black.copy(alpha = 0.3f), RoundedCornerShape(16.dp))
-                        // Simulación espacio de camara
+                    // Simulación espacio de camara
                 )
             }
         }

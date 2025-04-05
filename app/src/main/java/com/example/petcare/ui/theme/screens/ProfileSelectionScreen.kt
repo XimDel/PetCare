@@ -22,11 +22,11 @@ import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewProfileSelectionScreen () {
+fun PreviewProfileSelectionScreen() {
     val navController = rememberNavController()
     ProfileSelectionScreen(navController = navController)
 }

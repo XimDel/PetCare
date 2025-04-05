@@ -31,7 +31,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -103,12 +103,15 @@ fun PetRegistry(navController: NavController) {
                     Image(
                         painter = painterResource(id = R.drawable.petcare_image_),
                         contentDescription = "petcare_image_6",
-                        modifier = Modifier.fillMaxSize().zIndex(0f)
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .zIndex(0f)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.vet_code_qr_image),
                         contentDescription = "qr_icon",
-                        modifier = Modifier.zIndex(0f)
+                        modifier = Modifier
+                            .zIndex(0f)
                             .size(50.dp)
                             .clickable { navController.navigate(Screen.PetQRCode.route) }
                     )
@@ -177,7 +180,7 @@ fun PetRegistryForm() {
                         singleLine = true,
                         shape = RoundedCornerShape(20.dp),
                         textStyle = LocalTextStyle.current.copy(fontSize = 20.sp),
-                        label = { Text("Años",fontSize = 18.sp) },
+                        label = { Text("Años", fontSize = 18.sp) },
                         colors = TextFieldDefaults.outlinedTextFieldColors(
                             focusedBorderColor = Color(0xFFFFFFFF),
                             unfocusedBorderColor = Color(0xFFFFFFFF),
@@ -254,7 +257,7 @@ fun PetRegistryForm() {
                         singleLine = true,
                         shape = RoundedCornerShape(20.dp),
                         textStyle = LocalTextStyle.current.copy(fontSize = 18.sp),
-                        label = { Text("Kg",fontSize = 18.sp) },
+                        label = { Text("Kg", fontSize = 18.sp) },
                         colors = TextFieldDefaults.outlinedTextFieldColors(
                             focusedBorderColor = Color(0xFFFFFFFF),
                             unfocusedBorderColor = Color(0xFFFFFFFF),
