@@ -19,12 +19,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.ThreeElementHeader
 
 @Preview(showBackground = true)
+
 @Composable
-fun BlogPostScreen() {
+fun PreviewBlogPostScreen() {
+    val navController = rememberNavController()
+    BlogPostScreen(navController = navController)
+}
+
+@Composable
+fun BlogPostScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             ThreeElementHeader(
