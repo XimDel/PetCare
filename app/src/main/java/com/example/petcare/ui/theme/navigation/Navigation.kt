@@ -6,7 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.ui.theme.screens.CalendarPage
 import com.example.petcare.ui.theme.screens.HealthBlogPage
-import com.example.petcare.ui.theme.screens.HomeScreen
+import com.example.petcare.ui.theme.screens.HomePetPage
 import com.example.petcare.ui.theme.screens.ProfileSelectionScreen
 import com.example.petcare.ui.theme.screens.WelcomePage
 import com.example.petcare.ui.theme.screens.OwnerStartPage
@@ -68,7 +68,7 @@ fun AppNavigation() {
             MyPetsPage(navController = navController)
         }
         composable(Screen.HomePetPage.route) {
-            HomeScreen(navController = navController)
+            HomePetPage(navController = navController)
         }
         composable(Screen.PetRegistry.route) {
             PetRegistry(navController = navController)

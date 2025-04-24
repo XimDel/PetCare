@@ -25,15 +25,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewHomePetPage() {
     val navController = rememberNavController()
-    HomeScreen(navController = navController)
+    HomePetPage(navController = navController)
 }
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomePetPage(navController: NavHostController) {
 
     val petName = "Nombre"
 
@@ -199,3 +199,5 @@ fun IconButton(icon: Int) {
         modifier = Modifier.size(50.dp)
     )
 }
+
+
