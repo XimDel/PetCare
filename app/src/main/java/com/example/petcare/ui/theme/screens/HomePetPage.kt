@@ -148,9 +148,9 @@ fun HomePetPage(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                IconButton(R.drawable.logo_mypets) {navController.navigate(Screen.MyPetsPage.route)}
-                IconButton(R.drawable.logo) {navController.navigate(Screen.WelcomePage.route)}
-                IconButton(R.drawable.logo_settings) {navController.navigate(Screen.HomePetPage.route)}
+                IconButton(R.drawable.logo_mypets, onClick = {navController.navigate(Screen.MyPetsPage.route)})
+                IconButton(R.drawable.logo, onClick = {navController.navigate(Screen.WelcomePage.route)})
+                IconButton(R.drawable.logo_settings, onClick = {navController.navigate(Screen.HomePetPage.route)})
             }
         }
     }
@@ -196,7 +196,9 @@ fun IconButton(icon: Int,  onClick: () -> Unit) {
     Image(
         painter = painterResource(id = icon),
         contentDescription = "Botón inferior",
-        modifier = Modifier.size(50.dp)
+        modifier = Modifier
+            .size(50.dp)
+            .clickable { onClick() }
     )
 }
 

@@ -133,9 +133,9 @@ fun CalendarPage(navController: NavHostController) {
             ) {
 
                 IconPlaceholder(R.drawable.mypets_pet_3) {navController.navigate(Screen.HomePetPage.route)}
-                IconPlaceholder(R.drawable.logo_add) { navController.navigate(Screen.PetRegisterPage.route) }
-                IconPlaceholder(R.drawable.logo_reminder) { navController.navigate(Screen.CalendarPage.route) }
-                IconPlaceholder(R.drawable.logo_search) { navController.navigate(Screen.CalendarPage.route) }
+                IconPlaceholder(R.drawable.logo_add) { navController.navigate(Screen.PetRegisterPage.route)}
+                IconPlaceholder(R.drawable.logo_reminder) { navController.navigate(Screen.CalendarPage.route)}
+                IconPlaceholder(R.drawable.logo_search) { navController.navigate(Screen.CalendarPage.route)}
             }
         }
     }
