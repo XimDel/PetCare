@@ -73,7 +73,9 @@ fun MyPetsPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo_home),
                     contentDescription = "Logo Izquierdo",
-                    modifier = Modifier.size(44.dp)
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clickable { navController.navigate(Screen.HomePetPage.route) }
                 )
 
                 Text(
@@ -89,13 +91,15 @@ fun MyPetsPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo Derecho",
-                    modifier = Modifier.size(54.dp)
+                    modifier = Modifier
+                        .size(54.dp)
+                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
             }
 
-            // Tarjeta grande: "Luna"
+            // Tarjeta grande
             PetCardLarge(
-                nombre = "Luna",
+                nombre = "Dato BD",
                 imageRes = R.drawable.mypets_pet_1,
                 onClick = {
                     navController.navigate(Screen.HomePetPage.route)
@@ -111,15 +115,30 @@ fun MyPetsPage(navController: NavHostController) {
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    PetCardSmall("Max", R.drawable.mypets_pet_2, Modifier.weight(1f))
-                    PetCardSmall("Toby", R.drawable.mypets_pet_3, Modifier.weight(1f))
+                    PetCardSmall("Dato BD", R.drawable.mypets_pet_2,
+                        Modifier
+                            .weight(1f)
+                            .clickable { navController.navigate(Screen.HomePetPage.route) }
+                    )
+                    PetCardSmall("Dato BD", R.drawable.mypets_pet_3,
+                        Modifier
+                            .weight(1f)
+                            .clickable { navController.navigate(Screen.HomePetPage.route) }
+                    )
                 }
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    PetCardSmall("Nala", R.drawable.mypets_pet_4, Modifier.weight(1f))
-                    AddPetCard(Modifier.weight(1f))
+                    PetCardSmall("Dato BD", R.drawable.mypets_pet_4,
+                        Modifier
+                            .weight(1f)
+                            .clickable { navController.navigate(Screen.HomePetPage.route) }
+                    )
+                    AddPetCard(Modifier
+                        .weight(1f)
+                        .clickable { navController.navigate(Screen.PetRegisterPage.route) }
+                    )
                 }
             }
         }
@@ -202,8 +221,7 @@ fun AddPetCard(modifier: Modifier = Modifier) {
         modifier = modifier
             .aspectRatio(1f)
             .clip(RoundedCornerShape(12.dp))
-            .background(Color(0xFFE0E0E0))
-            .clickable { /* Acción al tocar */ },
+            .background(Color(0xFFE0E0E0)),
         contentAlignment = Alignment.Center
     ) {
         Icon(
