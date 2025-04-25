@@ -24,7 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewProfileSelectionScreen() {
     val navController = rememberNavController()
@@ -40,7 +40,11 @@ fun ProfileSelectionScreen(navController: NavController) {
             painter = painterResource(id = R.drawable.inicio_background),
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable { navController.navigate(Screen.WelcomePage.route) }
+
+    
         )
         Row(
             modifier = Modifier
@@ -56,6 +60,7 @@ fun ProfileSelectionScreen(navController: NavController) {
                 modifier = Modifier
                     .size(80.dp)
                     .padding(end = 12.dp)
+                    .clickable { navController.navigate(Screen.WelcomePage.route) }
             )
             Text(
                 text = "PetCare",
