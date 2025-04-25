@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -35,12 +37,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
+import com.example.petcare.ui.theme.Screen.AddPetVetpage
 
 @Preview(showBackground = true)
+@Composable
+fun PreviewAddPetVetpage() {
+    val navController = rememberNavController()
+    AddPetVetpage(navController = navController)
+}
 
 @Composable
-private fun PetCodePage() {
+fun AddPetVetpage(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
 
         Image(
@@ -52,7 +63,7 @@ private fun PetCodePage() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 81.dp, start = 35.dp, end = 60.dp)
+                .padding(top = 41.dp, start = 35.dp, end = 60.dp)
                 .align(Alignment.TopCenter),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
@@ -61,12 +72,14 @@ private fun PetCodePage() {
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .size(80.dp)
+                    .size(90.dp)
                     .padding(end = 12.dp)
+                    .clickable { navController.navigate(Screen.WelcomePage.route) }
+
             )
             Text(
-                text = "PetCareVet",
-                fontSize = 40.sp,
+                text = "Agregar Registro Veterinario",
+                fontSize = 42.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF29978D),
                 modifier = Modifier
@@ -79,14 +92,16 @@ private fun PetCodePage() {
         Box(modifier = Modifier.fillMaxSize()) {
             Column (modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 180.dp,start = 35.dp),
+                .padding(top = 220.dp,start = 35.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top){
                 Spacer(modifier = Modifier.height(1.dp))
                 RoleButtonFz(
                     text  = "Agregar Mascota existente",
                     color = Color(0xFFA4C8E1),
-                    icon = R.drawable.peticonprincipal
+                    icon = R.drawable.peticonprincipal,
+                    navController = navController
+
                 )
 
 
@@ -96,7 +111,8 @@ private fun PetCodePage() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 510.dp, start = 35.dp)
-                    .align(Alignment.TopCenter),
+                    .align(Alignment.TopCenter)
+                    .clickable { navController.navigate(Screen.PetRegistry.route) },
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ){
@@ -115,14 +131,15 @@ private fun PetCodePage() {
 
 
         }
-        Icon(
-            imageVector = Icons.Default.Home,
-            contentDescription = "home",
+        Image(
+            painter = painterResource(id = R.drawable.home_icon),
+            contentDescription = "Icono personalizado",
             modifier = Modifier
-                .size(100.dp)
+                .size(120.dp)
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 20.dp),
-            tint = Color.White
+                .padding(bottom = 20.dp)
+                .clickable { navController.navigate(Screen.HomePetPage.route) }
+
         )
 
     }
@@ -164,6 +181,7 @@ fun RoleButtonFz(
     text: String,
     color: Color,
     icon: Int,
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -203,7 +221,7 @@ fun RoleButtonFz(
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(
-                onClick = { /* Acción del primer botón */ },
+                onClick = { navController.navigate(Screen.VetPetCodeScreen.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
@@ -218,7 +236,7 @@ fun RoleButtonFz(
             Spacer(modifier = Modifier.width(10.dp))
 
             Button(
-                onClick = { /* Acción del segundo botón */ },
+                onClick = { navController.navigate(Screen.ScannerQRCodeScreen.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),

@@ -23,6 +23,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -60,9 +61,11 @@ fun PetQRCode(navController: NavController) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.logo),
+                            painter = painterResource(id = R.drawable.home_icon),
                             contentDescription = "Logo",
-                            modifier = Modifier.size(70.dp)
+                            modifier = Modifier
+                                .size(60.dp)
+                                .clickable { navController.navigate(Screen.HomePetPage.route) }
                         )
                         Button(
                             onClick = {},
@@ -77,9 +80,11 @@ fun PetQRCode(navController: NavController) {
                             )
                         }
                         Image(
-                            painter = painterResource(id = R.drawable.home_icon),
+                            painter = painterResource(id = R.drawable.logo),
                             contentDescription = "Home Icon",
-                            modifier = Modifier.size(50.dp)
+                            modifier = Modifier
+                                .size(60.dp)
+                                .clickable { navController.navigate(Screen.WelcomePage.route) }
                         )
                     }
                 }

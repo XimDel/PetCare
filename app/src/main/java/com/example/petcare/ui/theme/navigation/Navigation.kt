@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.petcare.ui.theme.screens.AddPetVetpage
 import com.example.petcare.ui.theme.screens.BlogPostScreen
 import com.example.petcare.ui.theme.screens.CalendarPage
 import com.example.petcare.ui.theme.screens.HealthBlogPage
@@ -19,6 +20,8 @@ import com.example.petcare.ui.theme.screens.PetCodePage
 import com.example.petcare.ui.theme.screens.PetHistoryPage
 import com.example.petcare.ui.theme.screens.PetQRCode
 import com.example.petcare.ui.theme.screens.PetRegistry
+import com.example.petcare.ui.theme.screens.VetPetCodeScreen
+import com.example.petcare.ui.theme.screens.ScannerQRCodeScreen
 //import com.example.petcare.ui.theme.screens.PetRegisterPage
 //import com.example.petcare.ui.theme.screens.PetRegistry
 
@@ -38,6 +41,9 @@ sealed class Screen(val route: String) {
     object PetQRCode: Screen("petqrcode")
     object PetRegisterPage: Screen("petregisterpage")
     object BlogPostScreen: Screen("blogpostscreen")
+    object AddPetVetpage: Screen("addpetvetpage")
+    object VetPetCodeScreen: Screen("vetpetcodescreen")
+    object ScannerQRCodeScreen: Screen("scannerqrcodescreen")
     // anadir aqui mas pantallas para navegacion
 }
 
@@ -91,8 +97,18 @@ fun AppNavigation() {
         composable(Screen.BlogPostScreen.route) {
             BlogPostScreen(navController = navController)
         }
+        composable(Screen.AddPetVetpage.route) {
+            AddPetVetpage(navController = navController)
+        }
+        composable(Screen.VetPetCodeScreen.route) {
+            VetPetCodeScreen(navController = navController)
+        }
+        composable(Screen.ScannerQRCodeScreen.route) {
+            ScannerQRCodeScreen(navController = navController)
+        }
         // Anadir mas composable destinations
     }
 }
+
 
 

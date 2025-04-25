@@ -21,12 +21,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.ThreeElementHeader
 
 @Preview(showBackground = true)
 @Composable
-fun ScannerQRCodeScreen() {
+fun PreviewScannerQRCodeScreen() {
+    val navController = rememberNavController()
+    ScannerQRCodeScreen(navController = navController)
+}
+
+@Composable
+fun ScannerQRCodeScreen( navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
