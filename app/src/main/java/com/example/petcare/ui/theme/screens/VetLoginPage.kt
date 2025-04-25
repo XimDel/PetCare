@@ -108,6 +108,7 @@ fun VetLoginPage(navController: NavController) {
                     color = Color(0xFFFFFFFF),
                     isSelected = selectedRole == "Iniciar Sesión",
                     onClick = {
+                        navController.navigate(Screen.VetMainMenuScreen.route)
                         selectedRole = "Iniciar Sesión"
                         // Chequear base de datos.
                         // Si es correcto, navegar a la HomePage:
@@ -167,7 +168,7 @@ fun RoleButtonVLP(
     text: String,
     color: Color,
     isSelected: Boolean,
-    onClick: () -> Unit
+    onClick: ( ) -> Unit
 ) {
     Row(
         modifier = Modifier

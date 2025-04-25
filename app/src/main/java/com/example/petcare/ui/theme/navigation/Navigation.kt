@@ -22,6 +22,8 @@ import com.example.petcare.ui.theme.screens.PetQRCode
 import com.example.petcare.ui.theme.screens.PetRegistry
 import com.example.petcare.ui.theme.screens.VetPetCodeScreen
 import com.example.petcare.ui.theme.screens.ScannerQRCodeScreen
+import com.example.petcare.ui.theme.screens.VetMainMenuScreen
+import com.example.petcare.ui.theme.screens.VetRegistrationScreen
 //import com.example.petcare.ui.theme.screens.PetRegisterPage
 //import com.example.petcare.ui.theme.screens.PetRegistry
 
@@ -44,6 +46,8 @@ sealed class Screen(val route: String) {
     object AddPetVetpage: Screen("addpetvetpage")
     object VetPetCodeScreen: Screen("vetpetcodescreen")
     object ScannerQRCodeScreen: Screen("scannerqrcodescreen")
+    object VetMainMenuScreen: Screen("vetmainmenuscreen")
+    object VetRegistrationScreen: Screen("vetregistrationscreen")
     // anadir aqui mas pantallas para navegacion
 }
 
@@ -105,6 +109,12 @@ fun AppNavigation() {
         }
         composable(Screen.ScannerQRCodeScreen.route) {
             ScannerQRCodeScreen(navController = navController)
+        }
+        composable(Screen.VetMainMenuScreen.route) {
+            VetMainMenuScreen(navController = navController)
+        }
+        composable(Screen.VetRegistrationScreen.route) {
+            VetRegistrationScreen(navController = navController)
         }
         // Anadir mas composable destinations
     }
