@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,8 +35,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewPetHistoryPage() {
     val navController = rememberNavController()
@@ -82,7 +84,9 @@ fun PetHistoryPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo_home),
                     contentDescription = "Logo Izquierdo",
-                    modifier = Modifier.size(44.dp)
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clickable { navController.navigate(Screen.HomePetPage.route) }
                 )
 
                 Text(
@@ -98,18 +102,20 @@ fun PetHistoryPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo Derecho",
-                    modifier = Modifier.size(54.dp)
+                    modifier = Modifier
+                        .size(54.dp)
+                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
             }
 
             Spacer(modifier = Modifier.height(240.dp))
-            PetHistoryDetails()
+            PetHistoryDetails(navController = navController)
         }
     }
 }
 
 @Composable
-fun PetHistoryDetails() {
+fun PetHistoryDetails(navController: NavHostController) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -136,12 +142,14 @@ fun PetHistoryDetails() {
                     modifier = Modifier
                         .size(88.dp)
                         .clip(RoundedCornerShape(50))
+                        .clickable { navController.navigate(Screen.HomePetPage.route) }
+
                 )
             }
         }
 
         Text(
-            text = "Luna",
+            text = "Dato BD",
             fontWeight = FontWeight.Bold,
             fontSize = 52.sp,
             color = Color(0xFF444444),
