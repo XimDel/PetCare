@@ -51,7 +51,7 @@ fun ScannerQRCodeScreen(navController: NavController) {
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon",
                     useBoxForTitle = true,
-                    onFirstIconClick = { navController.navigate(Screen.HomePetPage.route) },
+                    //onFirstIconClick = { navController.navigate(Screen.HomePetPage.route) }, -- Pendiente definir la ruta del icono "home"
                     onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
                 )
             },

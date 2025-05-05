@@ -105,7 +105,7 @@ fun ThreeElementHeader(
                     contentDescription = secondContentDescription,
                     modifier = Modifier
                         .size(48.dp)
-                        .clickable { onFirstIconClick() }
+                        .clickable { onSecondIconClick() }
                 )
             }
         }
