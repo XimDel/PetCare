@@ -38,7 +38,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewMyPetsPage() {
     val navController = rememberNavController()
@@ -73,7 +73,9 @@ fun MyPetsPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo_home),
                     contentDescription = "Logo Izquierdo",
-                    modifier = Modifier.size(44.dp)
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clickable { navController.navigate(Screen.HomePetPage.route) }
                 )
 
                 Text(
@@ -89,13 +91,15 @@ fun MyPetsPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo Derecho",
-                    modifier = Modifier.size(54.dp)
+                    modifier = Modifier
+                        .size(54.dp)
+                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
             }
 
             // Tarjeta grande: "Luna"
             PetCardLarge(
-                nombre = "Luna",
+                nombre = "Dato BD",
                 imageRes = R.drawable.mypets_pet_1,
                 onClick = {
                     navController.navigate(Screen.HomePetPage.route)
@@ -111,15 +115,17 @@ fun MyPetsPage(navController: NavHostController) {
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    PetCardSmall("Max", R.drawable.mypets_pet_2, Modifier.weight(1f))
-                    PetCardSmall("Toby", R.drawable.mypets_pet_3, Modifier.weight(1f))
+                    PetCardSmall("Dato BD", R.drawable.mypets_pet_2, Modifier.weight(1f)) {navController.navigate(Screen.HomePetPage.route)}
+                    PetCardSmall("Dato BD", R.drawable.mypets_pet_3, Modifier.weight(1f)) {navController.navigate(Screen.HomePetPage.route)}
                 }
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    PetCardSmall("Nala", R.drawable.mypets_pet_4, Modifier.weight(1f))
-                    AddPetCard(Modifier.weight(1f))
+                    PetCardSmall("Dato BD", R.drawable.mypets_pet_4, Modifier.weight(1f)) {navController.navigate(Screen.HomePetPage.route)}
+                    AddPetCard(Modifier.weight(1f)) {
+                        navController.navigate(Screen.PetRegisterPage.route)
+                    }
                 }
             }
         }
@@ -168,13 +174,19 @@ fun PetCardLarge(
 
 // Tarjetas pequeñas con texto
 @Composable
-fun PetCardSmall(nombre: String, imageRes: Int, modifier: Modifier = Modifier) {
+fun PetCardSmall(
+    nombre: String,
+    imageRes: Int,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     Column(
         modifier = modifier
             .aspectRatio(1f)
             .clip(RoundedCornerShape(12.dp))
             .background(Color.White)
-            .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp)),
+            .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp))
+            .clickable { onClick() },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
@@ -197,13 +209,16 @@ fun PetCardSmall(nombre: String, imageRes: Int, modifier: Modifier = Modifier) {
 
 // Tarjeta de agregar
 @Composable
-fun AddPetCard(modifier: Modifier = Modifier) {
+fun AddPetCard(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit // <-- Este parámetro permite que sea reutilizable
+) {
     Box(
         modifier = modifier
             .aspectRatio(1f)
             .clip(RoundedCornerShape(12.dp))
             .background(Color(0xFFE0E0E0))
-            .clickable { /* Acción al tocar */ },
+            .clickable { onClick() }, // <-- Ejecuta la acción al tocar
         contentAlignment = Alignment.Center
     ) {
         Icon(
@@ -214,3 +229,4 @@ fun AddPetCard(modifier: Modifier = Modifier) {
         )
     }
 }
+

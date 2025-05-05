@@ -35,7 +35,7 @@ fun PreviewHomePetPage() {
 @Composable
 fun HomeScreen(navController: NavHostController) {
 
-    val petName = "Nombre"
+    val petName = "Dato BD"
 
     Box(modifier = Modifier.fillMaxSize()) {
         // Imagen de fondo
@@ -148,9 +148,9 @@ fun HomeScreen(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                IconButton(R.drawable.logo_home)
-                IconButton(R.drawable.logo)
-                IconButton(R.drawable.logo_settings)
+                IconButton(R.drawable.logo_home){ navController.navigate(Screen.HomePetPage.route) }
+                IconButton(R.drawable.logo) { navController.navigate(Screen.WelcomePage.route) }
+                IconButton(R.drawable.logo_settings) { navController.navigate(Screen.HomePetPage.route) }
             }
         }
     }
@@ -192,10 +192,12 @@ fun HomeOption(icon: Int, label: String, onClick: () -> Unit) {
 
 
 @Composable
-fun IconButton(icon: Int) {
-    Image(
-        painter = painterResource(id = icon),
-        contentDescription = "Botón inferior",
-        modifier = Modifier.size(50.dp)
-    )
+fun IconButton(icon: Int, onClick: () -> Unit) {
+    androidx.compose.material3.IconButton(onClick = onClick) {
+        Image(
+            painter = painterResource(id = icon),
+            contentDescription = "Botón inferior",
+            modifier = Modifier.size(50.dp)
+        )
+    }
 }
