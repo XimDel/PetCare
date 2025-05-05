@@ -33,7 +33,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewPetRegistry() {
     val navController = rememberNavController()
@@ -71,7 +71,9 @@ fun PetRegistry(navController: NavController) {
                         Image(
                             painter = painterResource(id = R.drawable.logo),
                             contentDescription = "Logo",
-                            modifier = Modifier.size(70.dp)
+                            modifier = Modifier
+                                .size(70.dp)
+                                .clickable { navController.navigate(Screen.WelcomePage.route) }
                         )
                         Text(
                             text = "Registro",
@@ -84,7 +86,9 @@ fun PetRegistry(navController: NavController) {
                         Image(
                             painter = painterResource(id = R.drawable.home_icon),
                             contentDescription = "Home Icon",
-                            modifier = Modifier.size(50.dp)
+                            modifier = Modifier
+                                .size(50.dp)
+                                .clickable { navController.navigate(Screen.HomePetPage.route) }
                         )
                     }
                 }
@@ -124,7 +128,7 @@ fun PetRegistry(navController: NavController) {
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDEFAFF))
                     ) {
                         Text(
-                            text = "Nombre",
+                            text = "Dato BD",
                             fontSize = 25.sp,
                             color = Color(0xFF29978D),
                             fontWeight = FontWeight.Bold
