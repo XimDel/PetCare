@@ -108,7 +108,8 @@ fun AddPetVetPage(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 510.dp, start = 35.dp)
-                    .align(Alignment.TopCenter),
+                    .align(Alignment.TopCenter)
+                    .clickable { navController.navigate(Screen.PetRegistry.route) },
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {

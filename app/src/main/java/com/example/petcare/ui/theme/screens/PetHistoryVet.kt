@@ -73,7 +73,10 @@ fun PetHistoryVet(navController: NavHostController) {
                     firstText = "PetCare Vet",
                     colorFirstText = Color(0xFF91d4cd),
                     secondIcon = R.drawable.logo,
-                    secondContentDescription = "Vet Logo"
+                    secondContentDescription = "Vet Logo",
+                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
+
                 )
             },
             containerColor = Color.Transparent
@@ -192,31 +195,31 @@ fun PetHistoryVet(navController: NavHostController) {
                 // Lista de mascotas
                 PetCard(
                     petImage = R.drawable.peticonprincipal,
-                    petName = "ARTY",
-                    breed = "Beagle",
-                    type = "Perro",
-                    lastVisit = "10/10/23",
-                    nextVisit = "11/10/23",
+                    petName = "Dato BD",
+                    breed = "Dato BD",
+                    type = "Dato BD",
+                    lastVisit = "Dato BD",
+                    nextVisit = "Dato BD",
                     navController = navController
                 )
 
                 PetCard(
                     petImage = R.drawable.mypets_pet_2,
-                    petName = "MINA",
-                    breed = "Criollo",
-                    type = "Gato",
-                    lastVisit = "10/10/23",
-                    nextVisit = "11/10/23",
+                    petName = "Dato BD",
+                    breed = "Dato BD",
+                    type = "Dato BD",
+                    lastVisit = "Dato BD",
+                    nextVisit = "Dato BD",
                     navController = navController
                 )
 
                 PetCard(
                     petImage = R.drawable.mypets_pet_1,
-                    petName = "LUCKY",
-                    breed = "Husky",
-                    type = "Perro",
-                    lastVisit = "10/10/23",
-                    nextVisit = "11/10/23",
+                    petName = "Dato BD",
+                    breed = "Dato BD",
+                    type = "Dato BD",
+                    lastVisit = "Dato BD",
+                    nextVisit = "Dato BD",
                     navController = navController
                 )
 

@@ -206,7 +206,7 @@ fun RoleButtonFp(
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(
-                onClick = { navController.navigate(Screen.ScannerQRCodeScreen.route) },
+                onClick = { navController.navigate(Screen.PetQRCode.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),

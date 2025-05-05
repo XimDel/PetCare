@@ -26,12 +26,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun SearchPetScreenPreview() {
     val navController = rememberNavController()
@@ -39,7 +40,7 @@ fun SearchPetScreenPreview() {
 }
 
 @Composable
-fun SearchPetScreen(navController: NavHostController) {
+fun SearchPetScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +53,7 @@ fun SearchPetScreen(navController: NavHostController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                    .padding(horizontal = 26.dp, vertical = 30.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -62,7 +63,7 @@ fun SearchPetScreen(navController: NavHostController) {
                     modifier = Modifier
                         .size(40.dp)
                         .clickable {
-                            navController.navigate(Screen.HomePetPage.route)
+                            navController.navigate(Screen.VetMainMenuScreen.route)
                         },
                 )
                 Text(
@@ -74,7 +75,11 @@ fun SearchPetScreen(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = null,
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clickable {
+                            navController.navigate(Screen.WelcomePage.route)
+                        },
                 )
             }
 
@@ -165,15 +170,15 @@ fun SearchPetScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            Image(
+           /* Image(
                 painter = painterResource(id = R.drawable.logo_home),
                 contentDescription = null,
                 modifier = Modifier
                     .size(50.dp)
                     .clickable {
-                        navController.navigate(Screen.HomePetPage.route)
+                        navController.navigate(Screen.VetMainMenuScreen.route)
                     },
-            )
+            )*/  //Mismo logo de home con la misma ruta, pendiente definir si se queda o lo quitamos
         }
     }
 }
