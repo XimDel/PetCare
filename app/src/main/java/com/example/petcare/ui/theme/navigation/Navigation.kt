@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.petcare.ui.theme.screens.AddPetVetPage
 import com.example.petcare.ui.theme.screens.BlogPostScreen
 import com.example.petcare.ui.theme.screens.CalendarPage
 import com.example.petcare.ui.theme.screens.HealthBlogPage
@@ -16,7 +17,7 @@ import com.example.petcare.ui.theme.screens.VetLoginPage
 import com.example.petcare.ui.theme.screens.VetStartPage
 import com.example.petcare.ui.theme.screens.MyPetsPage
 import com.example.petcare.ui.theme.screens.PetCodePage
-import com.example.petcare.ui.theme.screens.PetCodePageP
+import com.example.petcare.ui.theme.screens.AddPetVetPage
 import com.example.petcare.ui.theme.screens.PetCodePageV
 import com.example.petcare.ui.theme.screens.PetHistoryPage
 import com.example.petcare.ui.theme.screens.PetHistoryVet
@@ -27,6 +28,7 @@ import com.example.petcare.ui.theme.screens.ScannerQRCodeScreen
 import com.example.petcare.ui.theme.screens.SearchPetScreen
 import com.example.petcare.ui.theme.screens.VetCodeScreen
 import com.example.petcare.ui.theme.screens.VetMainMenuScreen
+import com.example.petcare.ui.theme.screens.VetPetCodeScreen
 import com.example.petcare.ui.theme.screens.VetRegistrationScreen
 import com.example.petcare.ui.theme.screens.ViePetVet
 
@@ -56,6 +58,7 @@ sealed class Screen(val route: String) {
     object PetHistoryVet : Screen("pethistoryvet")
     object ViePetVet : Screen("viewpetvet")
     object SearchPetScreen : Screen("searchpetscreen")
+    object VetPetCodeScree : Screen("vetpetcodescreen")
 }
 
 @Composable
@@ -124,7 +127,7 @@ fun AppNavigation() {
             VetMainMenuScreen(navController = navController)
         }
         composable(Screen.AddPetVetPage.route) {
-            PetCodePageP(navController = navController)
+            AddPetVetPage(navController = navController)
         }
         composable(Screen.AddPetVet.route) {
             PetProfileScreen(navController = navController)
@@ -137,6 +140,9 @@ fun AppNavigation() {
         }
         composable(Screen.SearchPetScreen.route) {
             SearchPetScreen(navController = navController)
+        }
+        composable(Screen.VetPetCodeScree.route) {
+            VetPetCodeScreen(navController = navController)
         }
     }
 }

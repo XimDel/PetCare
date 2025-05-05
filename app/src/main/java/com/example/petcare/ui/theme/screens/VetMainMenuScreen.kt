@@ -46,7 +46,7 @@ import com.example.petcare.ui.theme.ThreeElementHeader
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewVetMainMenuScreene() {
+fun PreviewVetMainMenuScreen() {
     val navController = rememberNavController()
     VetMainMenuScreen(navController = navController)
 }
@@ -71,7 +71,7 @@ fun VetMainMenuScreen(navController: NavController) {
                     colorFirstText = Color(0xFF91d4cd),
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon",
-                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
+                    onFirstIconClick = { navController.navigate(Screen.HomePetPage.route) },
                     onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
                 )
             },
