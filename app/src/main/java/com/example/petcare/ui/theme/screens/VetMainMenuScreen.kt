@@ -72,7 +72,7 @@ fun VetMainMenuScreen(navController: NavController) {
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon",
                     onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
-                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) },
                 )
             },
             containerColor = Color.Transparent
@@ -126,13 +126,13 @@ fun VetMainMenuScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Image(
+               /* Image(
                     painter = painterResource(id = R.drawable.house_icon),
                     contentDescription = "House icon",
                     modifier = Modifier
                         .size(80.dp)
                         .align(Alignment.CenterHorizontally)
-                )
+                )*/ // Boton duplicado "home", pendiente definir si queda o no
             }
         }
     }

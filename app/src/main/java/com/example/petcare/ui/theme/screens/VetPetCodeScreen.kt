@@ -16,7 +16,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.ThreeElementHeader
 import com.example.petcare.ui.theme.navigation.Screen
-import com.example.petcare.ui.theme.navigation.Screen.VetPetCodeScree
 
 @Preview(showBackground = true)
 @Composable
@@ -47,8 +46,7 @@ fun VetPetCodeScreen(navController: NavHostController) {
                     secondContentDescription = "Petcare icon",
                     useBoxForTitle = true,
                     onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
-                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
-
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) },
                 )
             },
             containerColor = Color.Transparent

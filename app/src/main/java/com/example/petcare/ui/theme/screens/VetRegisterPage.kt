@@ -41,7 +41,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewVetRegisterPage() {
     val navController = rememberNavController()
@@ -126,7 +126,7 @@ fun PetCodePageV(navController: NavController) {
                     .size(100.dp)
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 20.dp)
-                    .clickable { navController.navigate(Screen.WelcomePage.route) },
+                    .clickable { navController.navigate(Screen.VetMainMenuScreen.route) },
                 tint = Color.White
             )
         }
@@ -209,7 +209,7 @@ fun RoleButtonFd(
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(
-                onClick = {  },
+                onClick = { navController.navigate(Screen.VetCodeScreen.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),

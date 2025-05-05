@@ -52,7 +52,7 @@ fun ScannerQRCodeScreen(navController: NavController) {
                     secondContentDescription = "Petcare icon",
                     useBoxForTitle = true,
                     //onFirstIconClick = { navController.navigate(Screen.HomePetPage.route) }, -- Pendiente definir la ruta del icono "home"
-                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) },
                 )
             },
             containerColor = Color.Transparent

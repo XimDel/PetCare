@@ -21,8 +21,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.ThreeElementHeader
+import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewVetCodeScreen() {
     val navController = rememberNavController()
@@ -49,7 +50,9 @@ fun VetCodeScreen(navController: NavController) {
                     colorFirstText = Color(0xFF0d1925),
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon",
-                    useBoxForTitle = true
+                    useBoxForTitle = true,
+                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
                 )
             },
             containerColor = Color.Transparent
@@ -71,7 +74,7 @@ fun CodeScreenContent(
     firstImageDescription: String,
     secondImage: Int,
     secondImageDescription: String,
-    innerPadding: PaddingValues
+    innerPadding: PaddingValues,
 ) {
     Column(
         modifier = Modifier

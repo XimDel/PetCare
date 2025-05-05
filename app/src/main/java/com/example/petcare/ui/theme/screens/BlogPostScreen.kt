@@ -23,6 +23,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.ThreeElementHeader
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -41,7 +42,9 @@ fun BlogPostScreen(navController: NavHostController) {
                 firstText = "Blog de Salud",
                 colorFirstText = Color(0xFF7555a7),
                 secondIcon = R.drawable.logo,
-                secondContentDescription = "Petcare icon"
+                secondContentDescription = "Petcare icon",
+                onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
+                onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
             )
         }
     ) { innerPadding ->

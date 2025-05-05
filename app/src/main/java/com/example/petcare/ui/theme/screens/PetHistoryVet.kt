@@ -75,8 +75,7 @@ fun PetHistoryVet(navController: NavHostController) {
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Vet Logo",
                     onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
-                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
-
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) },
                 )
             },
             containerColor = Color.Transparent
