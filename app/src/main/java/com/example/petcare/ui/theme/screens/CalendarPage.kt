@@ -2,6 +2,7 @@ package com.example.petcare.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,8 +30,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewCalendarPage() {
     val navController = rememberNavController()
@@ -63,7 +65,9 @@ fun CalendarPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo_home),
                     contentDescription = "Logo Home",
-                    modifier = Modifier.size(44.dp)
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clickable { navController.navigate(Screen.HomePetPage.route) }
                 )
 
                 Text(
@@ -77,7 +81,9 @@ fun CalendarPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo App",
-                    modifier = Modifier.size(54.dp)
+                    modifier = Modifier
+                        .size(54.dp)
+                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
             }
 
@@ -125,10 +131,10 @@ fun CalendarPage(navController: NavHostController) {
                     .padding(vertical = 24.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                IconPlaceholder(R.drawable.mypets_pet_3)
-                IconPlaceholder(R.drawable.logo_add)
-                IconPlaceholder(R.drawable.logo_reminder)
-                IconPlaceholder(R.drawable.logo_search)
+                IconPlaceholder(R.drawable.mypets_pet_3) { navController.navigate(Screen.PetRegistry.route) }
+                IconPlaceholder(R.drawable.logo_add) { navController.navigate(Screen.CalendarPage.route) }
+                IconPlaceholder(R.drawable.logo_reminder) { navController.navigate(Screen.CalendarPage.route) }
+                IconPlaceholder(R.drawable.logo_search) { navController.navigate(Screen.CalendarPage.route) }
             }
         }
     }
@@ -156,10 +162,13 @@ fun LegendItem(color: Color, text: String) {
 }
 
 @Composable
-fun IconPlaceholder(iconRes: Int) {
+fun IconPlaceholder(iconRes: Int, onClick: () -> Unit) {
     Image(
         painter = painterResource(id = iconRes),
         contentDescription = "Icono menú",
-        modifier = Modifier.size(64.dp)
+        modifier = Modifier
+            .size(64.dp)
+            .clickable { onClick() }
     )
 }
+

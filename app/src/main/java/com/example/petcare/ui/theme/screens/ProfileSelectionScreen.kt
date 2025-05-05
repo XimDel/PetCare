@@ -42,9 +42,6 @@ fun ProfileSelectionScreen(navController: NavController) {
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxSize()
-                .clickable { navController.navigate(Screen.WelcomePage.route) }
-
-    
         )
         Row(
             modifier = Modifier

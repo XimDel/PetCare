@@ -31,7 +31,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewHealthBlogPage() {
     val navController = rememberNavController()
@@ -67,7 +67,9 @@ fun HealthBlogPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo_home),
                     contentDescription = "Logo Izquierdo",
-                    modifier = Modifier.size(44.dp)
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clickable { navController.navigate(Screen.HomePetPage.route) }
                 )
 
                 // Título
@@ -84,7 +86,9 @@ fun HealthBlogPage(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo Derecho",
-                    modifier = Modifier.size(54.dp)
+                    modifier = Modifier
+                        .size(54.dp)
+                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
             }
 
