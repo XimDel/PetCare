@@ -46,7 +46,7 @@ import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 import com.example.petcare.ui.theme.ThreeElementHeader
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewVetRegistrationPage() {
     val navController = rememberNavController()
@@ -73,7 +73,9 @@ fun VetRegistrationScreen(navController: NavHostController) {
                     colorFirstText = Color(0xFF0d1925),
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon",
-                    useBoxForTitle = true
+                    useBoxForTitle = true,
+                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
                 )
             },
             containerColor = Color.Transparent
@@ -142,11 +144,11 @@ fun VetRegistrationScreen(navController: NavHostController) {
                         ) {
                             VetRegistrationRow(
                                 containerText = "Veterinario",
-                                textValue = "Nombre del Veterinario"
+                                textValue = "Dato BD"
                             )
                             VetRegistrationRow(
                                 containerText = "Dirección",
-                                textValue = "Dirección del veterinario"
+                                textValue = "Dato BD"
                             )
                             VetRegistrationRow(
                                 containerText = "Email",

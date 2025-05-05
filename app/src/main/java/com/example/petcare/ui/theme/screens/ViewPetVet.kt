@@ -58,7 +58,7 @@ fun ViePetVet(navController: NavHostController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                    .padding(horizontal = 24.dp, vertical = 24.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -68,7 +68,7 @@ fun ViePetVet(navController: NavHostController) {
                     contentDescription = "Home Icon",
                     modifier = Modifier.size(40.dp)
                         .clickable {
-                            navController.navigate(Screen.HomePetPage.route)
+                            navController.navigate(Screen.VetMainMenuScreen.route)
                         },
                 )
 
@@ -84,7 +84,11 @@ fun ViePetVet(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Health Icon",
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clickable {
+                            navController.navigate(Screen.WelcomePage.route)
+                        }
                 )
             }
 
@@ -133,7 +137,7 @@ fun ViePetVet(navController: NavHostController) {
                         .padding(horizontal = 20.dp, vertical = 8.dp)
                 ) {
                     Text(
-                        text = "Nombre",
+                        text = "Dato BD",
                         fontSize = 24.sp,
                         color = Color(0xFF2A4D65),
                         fontWeight = FontWeight.Bold

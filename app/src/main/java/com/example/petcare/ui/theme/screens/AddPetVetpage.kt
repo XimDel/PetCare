@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,16 +39,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewAddPetVetPage() {
     val navController = rememberNavController()
-    PetCodePageP(navController = navController)
+    AddPetVetPage(navController = navController)
 }
 
 @Composable
-fun PetCodePageP(navController: NavController) {
+fun AddPetVetPage(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
 
         Image(
@@ -70,6 +72,7 @@ fun PetCodePageP(navController: NavController) {
                 modifier = Modifier
                     .size(80.dp)
                     .padding(end = 12.dp)
+                    .clickable { navController.navigate(Screen.WelcomePage.route) }
             )
             Text(
                 text = "PetCareVet",
@@ -93,6 +96,7 @@ fun PetCodePageP(navController: NavController) {
             ) {
                 Spacer(modifier = Modifier.height(1.dp))
                 RoleButtonFz(
+                    navController = navController,
                     text = "Agregar Mascota existente",
                     color = Color(0xFFA4C8E1),
                     icon = R.drawable.peticonprincipal
@@ -104,15 +108,16 @@ fun PetCodePageP(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 510.dp, start = 35.dp)
-                    .align(Alignment.TopCenter),
+                    .align(Alignment.TopCenter)
+                    .clickable { navController.navigate(Screen.PetRegistry.route) },
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
                 RoleButtonFy(
                     text = "Agregar Nueva Mascota",
                     color = Color(0xFFA4C8E1),
-                    icon = R.drawable.peticonprincipal
-
+                    icon = R.drawable.peticonprincipal,
+                    navController = navController
 
                 )
 
@@ -125,7 +130,8 @@ fun PetCodePageP(navController: NavController) {
             modifier = Modifier
                 .size(100.dp)
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 20.dp),
+                .padding(bottom = 20.dp)
+                .clickable { navController.navigate(Screen.VetMainMenuScreen.route) },
             tint = Color.White
         )
 
@@ -134,6 +140,7 @@ fun PetCodePageP(navController: NavController) {
 
 @Composable
 fun RoleButtonFy(
+    navController: NavController,
     text: String,
     color: Color,
     icon: Int,
@@ -167,6 +174,7 @@ fun RoleButtonFy(
 
 @Composable
 fun RoleButtonFz(
+    navController: NavController,
     text: String,
     color: Color,
     icon: Int,
@@ -209,7 +217,7 @@ fun RoleButtonFz(
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(
-                onClick = { /* Acción del primer botón */ },
+                onClick = { navController.navigate(Screen.VetPetCodeScree.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
@@ -224,7 +232,7 @@ fun RoleButtonFz(
             Spacer(modifier = Modifier.width(10.dp))
 
             Button(
-                onClick = { /* Acción del segundo botón */ },
+                onClick = {  navController.navigate(Screen.ScannerQRCodeScreen.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),

@@ -3,6 +3,7 @@ package com.example.petcare.ui.theme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -41,7 +42,9 @@ fun ThreeElementHeader(
     secondIcon: Int,
     secondContentDescription: String,
     useBoxForTitle: Boolean = false, // Parámetro para activar un contenedor central en caso de que sea necesario
-    titleBackgroundColor: Color = Color(0xFFc2e7e0)
+    titleBackgroundColor: Color = Color(0xFFc2e7e0),
+    onFirstIconClick: () -> Unit = {},
+    onSecondIconClick: () -> Unit = {}
 ) {
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -58,6 +61,7 @@ fun ThreeElementHeader(
                     contentDescription = firstContentDescription,
                     modifier = Modifier
                         .size(48.dp)
+                        .clickable { onFirstIconClick() }
                 )
 
                 Spacer(modifier = Modifier.width(16.dp))
@@ -101,6 +105,7 @@ fun ThreeElementHeader(
                     contentDescription = secondContentDescription,
                     modifier = Modifier
                         .size(48.dp)
+                        .clickable { onSecondIconClick() }
                 )
             }
         }

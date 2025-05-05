@@ -24,7 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun PreviewOwnerStartPage() {
     val navController = rememberNavController()
@@ -58,6 +58,7 @@ fun OwnerStartPage(navController: NavController) {
                     modifier = Modifier
                         .size(80.dp)
                         .padding(end = 12.dp)
+                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
                 Text(
                     text = "PetCare",

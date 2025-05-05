@@ -46,7 +46,7 @@ import com.example.petcare.ui.theme.ThreeElementHeader
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewVetMainMenuScreene() {
+fun PreviewVetMainMenuScreen() {
     val navController = rememberNavController()
     VetMainMenuScreen(navController = navController)
 }
@@ -70,7 +70,9 @@ fun VetMainMenuScreen(navController: NavController) {
                     firstText = stringResource(id = R.string.petcare_vet),
                     colorFirstText = Color(0xFF91d4cd),
                     secondIcon = R.drawable.logo,
-                    secondContentDescription = "Petcare icon"
+                    secondContentDescription = "Petcare icon",
+                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
+                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) },
                 )
             },
             containerColor = Color.Transparent
@@ -124,13 +126,13 @@ fun VetMainMenuScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Image(
+               /* Image(
                     painter = painterResource(id = R.drawable.house_icon),
                     contentDescription = "House icon",
                     modifier = Modifier
                         .size(80.dp)
                         .align(Alignment.CenterHorizontally)
-                )
+                )*/ // Boton duplicado "home", pendiente definir si queda o no
             }
         }
     }

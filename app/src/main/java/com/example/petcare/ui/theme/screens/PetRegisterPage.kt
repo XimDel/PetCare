@@ -69,6 +69,7 @@ fun PetCodePage(navController: NavController) {
                 modifier = Modifier
                     .size(80.dp)
                     .padding(end = 12.dp)
+                    .clickable { navController.navigate(Screen.WelcomePage.route) }
             )
             Text(
                 text = "PetCare",
@@ -122,6 +123,7 @@ fun PetCodePage(navController: NavController) {
                     .size(135.dp)
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 80.dp)
+                    .clickable { navController.navigate(Screen.HomePetPage.route) }
             )
         }
     }
@@ -204,7 +206,7 @@ fun RoleButtonFp(
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(
-                onClick = { navController.navigate(Screen.ScannerQRCodeScreen.route) },
+                onClick = { navController.navigate(Screen.PetQRCode.route) },
                 modifier = Modifier
                     .weight(1f)
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
