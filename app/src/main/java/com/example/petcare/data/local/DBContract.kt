@@ -57,4 +57,30 @@ object DBContract {
             FOREIGN KEY (id_propietario) REFERENCES usuario(id_usuario)
         );
     """
+
+    const val SQL_CREATE_MEDICAMENTO = """
+    CREATE TABLE medicamento (
+        id_medicamento INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        dosis TEXT,
+        observaciones TEXT
+    );
+    """
+
+    const val SQL_CREATE_VACUNA = """
+    CREATE TABLE vacuna (
+        id_vacuna INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        fecha_aplicacion DATE,
+        observaciones TEXT
+    );
+    """
+
+    const val SQL_CREATE_CONDICION_MEDICA = """
+    CREATE TABLE condicion_medica (
+        id_condicion_medica INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        descripcion TEXT
+    );
+    """
 }
