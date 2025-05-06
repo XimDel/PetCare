@@ -3,7 +3,10 @@ package com.example.petcare.data.local
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.petcare.data.local.DBContract.SQL_CREATE_MASCOTA
 import com.example.petcare.data.local.DBContract.SQL_CREATE_RAZA
+import com.example.petcare.data.local.DBContract.SQL_CREATE_TIPO_CITA
+import com.example.petcare.data.local.DBContract.SQL_CREATE_TIPO_MASCOTA
 import com.example.petcare.data.local.DBContract.SQL_CREATE_TIPO_USUARIO
 import com.example.petcare.data.local.DBContract.SQL_CREATE_USUARIO
 
@@ -12,11 +15,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(SQL_CREATE_TIPO_USUARIO)
         db.execSQL(SQL_CREATE_USUARIO)
-//        db.execSQL(SQL_CREATE_TIPO_MASCOTA)
+        db.execSQL(SQL_CREATE_TIPO_MASCOTA)
         db.execSQL(SQL_CREATE_RAZA)
-//        db.execSQL(SQL_CREATE_MASCOTA)
+        db.execSQL(SQL_CREATE_MASCOTA)
 //        db.execSQL(SQL_CREATE_IMAGEN_MASCOTA)
-//        db.execSQL(SQL_CREATE_TIPO_CITA)
+        db.execSQL(SQL_CREATE_TIPO_CITA)
 //        db.execSQL(SQL_CREATE_CITA)
 //        db.execSQL(SQL_CREATE_VACUNA)
 //        db.execSQL(SQL_CREATE_MEDICAMENTO)
