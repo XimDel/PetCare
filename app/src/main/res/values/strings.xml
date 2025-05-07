@@ -23,5 +23,4 @@
     <string name="qr_code_scanner_message">Coloca el código QR dentro del cuadro para escanearlo.</string>
     <string name="register_vet">Registro</string>
     <string name="register_vet_name">Nombre Veterinaria</string>
-    <string name="title_activity_usuario_test">UsuarioTestActivity</string>
 </resources>
