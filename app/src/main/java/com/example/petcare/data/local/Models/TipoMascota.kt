@@ -1,8 +1,6 @@
-package com.example.petcare.data.local.Models
+package com.example.petcare.data.local
 
-class TipoMascota {
-    data class TipoMascota(
-        val idTipoMascota: Int,
-        val nombre: String
-    )
-}
+data class TipoMascota(
+    val idTipoMascota: Int,
+    val nombre: String
+)
