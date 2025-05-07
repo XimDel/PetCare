@@ -184,13 +184,7 @@ fun PetRegistryForm() {
                         singleLine = true,
                         shape = RoundedCornerShape(20.dp),
                         textStyle = LocalTextStyle.current.copy(fontSize = 20.sp),
-                        label = { Text("Años", fontSize = 18.sp) },
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = Color(0xFFFFFFFF),
-                            unfocusedBorderColor = Color(0xFFFFFFFF),
-                            cursorColor = Color(0xFFFFFFFF),
-                            containerColor = Color(0xFFC1DDFD)
-                        )
+                        label = { Text("Años", fontSize = 18.sp) }
                     )
                 }
                 Row(
@@ -261,13 +255,7 @@ fun PetRegistryForm() {
                         singleLine = true,
                         shape = RoundedCornerShape(20.dp),
                         textStyle = LocalTextStyle.current.copy(fontSize = 18.sp),
-                        label = { Text("Kg", fontSize = 18.sp) },
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = Color(0xFFFFFFFF),
-                            unfocusedBorderColor = Color(0xFFFFFFFF),
-                            cursorColor = Color(0xFFFFFFFF),
-                            containerColor = Color(0xFFC1DDFD)
-                        )
+                        label = { Text("Kg", fontSize = 18.sp) }
                     )
                 }
                 Row(
