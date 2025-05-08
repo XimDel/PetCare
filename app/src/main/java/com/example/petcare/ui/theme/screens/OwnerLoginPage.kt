@@ -1,22 +1,16 @@
 package com.example.petcare.ui.theme.screens
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.data.local.UsuarioDaoImpl
+import com.example.petcare.data.local.inicializarUsuariosPorDefecto
 import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true)
@@ -39,18 +35,26 @@ fun PreviewOwnerLoginPage() {
 
 @Composable
 fun OwnerLoginPage(navController: NavController) {
-    var selectedRole by remember { mutableStateOf<String?>(null) }
-
+    val context = LocalContext.current
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var loginError by remember { mutableStateOf(false) }
+
+    // Insertar usuarios por defecto si no existen
+    LaunchedEffect(Unit) {
+        inicializarUsuariosPorDefecto(context)
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
+        // Fondo
         Image(
             painter = painterResource(id = R.drawable.inicio_background),
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
+
+        // Cabecera con logo y título "PetCare"
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -79,6 +83,8 @@ fun OwnerLoginPage(navController: NavController) {
                 )
             }
         }
+
+        // Cuerpo
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -94,6 +100,7 @@ fun OwnerLoginPage(navController: NavController) {
                     .align(Alignment.CenterHorizontally)
             )
             Spacer(modifier = Modifier.height(10.dp))
+
             Column(
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -104,16 +111,32 @@ fun OwnerLoginPage(navController: NavController) {
                     password = password,
                     onPasswordChange = { password = it }
                 )
+
                 RoleButtonOLP(
                     text = "Iniciar Sesión",
                     color = Color(0xFFFFE599),
                     onClick = {
-                        selectedRole = "Iniciar Sesión"
-                        // Chequear base de datos.
-                        // Si es correcto, navegar a la HomePage:
-                        navController.navigate(Screen.MyPetsPage.route)
+                        val dao = UsuarioDaoImpl(context)
+                        val usuarios = dao.obtenerUsuarios()
+                        val usuarioValido = usuarios.any {
+                            it.correo == username.trim() && it.contrasenia == password.trim()
+                        }
+
+                        if (usuarioValido) {
+                            navController.navigate(Screen.MyPetsPage.route)
+                        } else {
+                            loginError = true
+                        }
                     }
                 )
+
+                if (loginError) {
+                    Text(
+                        text = "Credenciales incorrectas",
+                        color = Color.Red,
+                        fontSize = 16.sp
+                    )
+                }
             }
         }
     }
@@ -136,7 +159,6 @@ fun CustomTextFields(
         modifier = Modifier.fillMaxWidth(0.7f),
         shape = RoundedCornerShape(20.dp)
     )
-    Spacer(modifier = Modifier.height(0.dp))
     OutlinedTextField(
         value = password,
         onValueChange = onPasswordChange,
@@ -153,7 +175,7 @@ fun CustomTextFields(
 fun RoleButtonOLP(
     text: String,
     color: Color,
-    onClick: () -> Unit   // Cambiado a () -> Unit){}
+    onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -166,7 +188,6 @@ fun RoleButtonOLP(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        Spacer(modifier = Modifier.width(5.dp))
         Text(
             text = text,
             fontSize = 27.sp,

@@ -1,31 +1,19 @@
 package com.example.petcare.ui.theme.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -36,6 +24,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.data.local.Mascota
+import com.example.petcare.data.local.MascotaDaoImpl
 import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true)
@@ -47,8 +37,15 @@ fun PreviewMyPetsPage() {
 
 @Composable
 fun MyPetsPage(navController: NavHostController) {
+    val context = LocalContext.current
+    var mascotas by remember { mutableStateOf<List<Mascota>>(emptyList()) }
+
+    LaunchedEffect(Unit) {
+        val dao = MascotaDaoImpl(context)
+        mascotas = dao.obtenerMascotas()
+    }
+
     Box(modifier = Modifier.fillMaxSize()) {
-        // Fondo
         Image(
             painter = painterResource(id = R.drawable.mypets_background),
             contentDescription = "Fondo Mis Mascotas",
@@ -59,10 +56,10 @@ fun MyPetsPage(navController: NavHostController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 50.dp, start = 20.dp, end = 20.dp),
+                .padding(top = 50.dp, start = 20.dp, end = 20.dp, bottom = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Título y logos
+            // Header
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -75,7 +72,13 @@ fun MyPetsPage(navController: NavHostController) {
                     contentDescription = "Logo Izquierdo",
                     modifier = Modifier
                         .size(44.dp)
-                        .clickable { navController.navigate(Screen.HomePetPage.route) }
+                        .clickable {
+                            navController.navigate(
+                                Screen.HomePetPage.createRoute(
+                                    mascotas.firstOrNull()?.idMascota ?: 0
+                                )
+                            )
+                        }
                 )
 
                 Text(
@@ -97,43 +100,67 @@ fun MyPetsPage(navController: NavHostController) {
                 )
             }
 
-            // Tarjeta grande: "Luna"
-            PetCardLarge(
-                nombre = "Dato BD",
-                imageRes = R.drawable.mypets_pet_1,
-                onClick = {
-                    navController.navigate(Screen.HomePetPage.route)
-                }
-            )
-            Spacer(modifier = Modifier.height(20.dp))
+            // Tarjeta grande
+            if (mascotas.isNotEmpty()) {
+                PetCardLarge(
+                    nombre = mascotas[0].nombre,
+                    imageRes = R.drawable.mypets_pet_1,
+                    onClick = {
+                        navController.navigate(Screen.HomePetPage.createRoute(mascotas[0].idMascota))
+                    }
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+            }
 
-            // Cuadros pequeños
-            Column(
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
+            // Tarjetas pequeñas
+            val resto = mascotas.drop(1)
+            val mascotasEnFilas = resto.chunked(2)
+
+            mascotasEnFilas.forEach { fila ->
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    PetCardSmall("Dato BD", R.drawable.mypets_pet_2, Modifier.weight(1f)) {navController.navigate(Screen.HomePetPage.route)}
-                    PetCardSmall("Dato BD", R.drawable.mypets_pet_3, Modifier.weight(1f)) {navController.navigate(Screen.HomePetPage.route)}
-                }
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    PetCardSmall("Dato BD", R.drawable.mypets_pet_4, Modifier.weight(1f)) {navController.navigate(Screen.HomePetPage.route)}
-                    AddPetCard(Modifier.weight(1f)) {
-                        navController.navigate(Screen.PetRegisterPage.route)
+                    fila.forEach { mascota ->
+                        PetCardSmall(
+                            nombre = mascota.nombre,
+                            imageRes = R.drawable.mypets_pet_2,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            navController.navigate(Screen.HomePetPage.createRoute(mascota.idMascota))
+                        }
+                    }
+
+                    // Si hay solo una mascota en la fila, rellena el espacio
+                    if (fila.size == 1) {
+                        Spacer(modifier = Modifier.weight(1f))
                     }
                 }
+                Spacer(modifier = Modifier.height(12.dp))
+            }
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Botón fijo para agregar nueva mascota
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(Color(0xFF29978D))
+                    .clickable { navController.navigate(Screen.PetRegisterPage.route) }
+                    .padding(horizontal = 20.dp, vertical = 10.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Agregar Mascota",
+                    tint = Color.White,
+                    modifier = Modifier.size(24.dp)
+                )
             }
         }
     }
 }
 
-
-// Tarjeta grande superior
 @Composable
 fun PetCardLarge(
     nombre: String,
@@ -171,8 +198,6 @@ fun PetCardLarge(
     }
 }
 
-
-// Tarjetas pequeñas con texto
 @Composable
 fun PetCardSmall(
     nombre: String,
@@ -206,27 +231,3 @@ fun PetCardSmall(
         )
     }
 }
-
-// Tarjeta de agregar
-@Composable
-fun AddPetCard(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit // <-- Este parámetro permite que sea reutilizable
-) {
-    Box(
-        modifier = modifier
-            .aspectRatio(1f)
-            .clip(RoundedCornerShape(12.dp))
-            .background(Color(0xFFE0E0E0))
-            .clickable { onClick() }, // <-- Ejecuta la acción al tocar
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(
-            imageVector = Icons.Default.Add,
-            contentDescription = "Agregar",
-            tint = Color.Gray,
-            modifier = Modifier.size(28.dp)
-        )
-    }
-}
-

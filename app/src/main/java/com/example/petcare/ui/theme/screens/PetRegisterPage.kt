@@ -112,7 +112,7 @@ fun PetCodePage(navController: NavController) {
                     color = Color(0xFFFFC1C1),
                     icon = R.drawable.first_pet_icon,
                     onClick = {
-                        navController.navigate(Screen.PetRegistry.route)
+                        navController.navigate(Screen.PetRegistryNew.route) // ✅ navega sin ID
                     }
                 )
             }

@@ -34,6 +34,16 @@ class DBHelper(context: Context) :
         db.execSQL(SQL_CREATE_TRATAMIENTO)
         db.execSQL(SQL_CREATE_CONDICION_MEDICA)
         db.execSQL(SQL_CREATE_BLOG)
+
+        // Insertar tipos de usuario
+        db.execSQL("INSERT INTO tipo_usuario (id_tipo_usuario, nombre) VALUES (1, 'Dueño'), (2, 'Veterinario')")
+
+        // Insertar usuarios por defecto
+        db.execSQL(
+            "INSERT INTO usuario (nombre, correo, contrasenia, id_tipo_usuario) VALUES " +
+                    "('Usuario1', 'usuario1@correo.com', '1234', 1), " +
+                    "('Vet1', 'vet@correo.com', 'abcd', 2)"
+        )
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

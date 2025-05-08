@@ -1,36 +1,12 @@
 package com.example.petcare.ui.theme.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.petcare.ui.theme.screens.AddPetVetPage
-import com.example.petcare.ui.theme.screens.BlogPostScreen
-import com.example.petcare.ui.theme.screens.CalendarPage
-import com.example.petcare.ui.theme.screens.HealthBlogPage
-import com.example.petcare.ui.theme.screens.HomeScreen
-import com.example.petcare.ui.theme.screens.ProfileSelectionScreen
-import com.example.petcare.ui.theme.screens.WelcomePage
-import com.example.petcare.ui.theme.screens.OwnerStartPage
-import com.example.petcare.ui.theme.screens.OwnerLoginPage
-import com.example.petcare.ui.theme.screens.VetLoginPage
-import com.example.petcare.ui.theme.screens.VetStartPage
-import com.example.petcare.ui.theme.screens.MyPetsPage
-import com.example.petcare.ui.theme.screens.PetCodePage
-import com.example.petcare.ui.theme.screens.AddPetVetPage
-import com.example.petcare.ui.theme.screens.PetCodePageV
-import com.example.petcare.ui.theme.screens.PetHistoryPage
-import com.example.petcare.ui.theme.screens.PetHistoryVet
-import com.example.petcare.ui.theme.screens.PetProfileScreen
-import com.example.petcare.ui.theme.screens.PetQRCode
-import com.example.petcare.ui.theme.screens.PetRegistry
-import com.example.petcare.ui.theme.screens.ScannerQRCodeScreen
-import com.example.petcare.ui.theme.screens.SearchPetScreen
-import com.example.petcare.ui.theme.screens.VetCodeScreen
-import com.example.petcare.ui.theme.screens.VetMainMenuScreen
-import com.example.petcare.ui.theme.screens.VetPetCodeScreen
-import com.example.petcare.ui.theme.screens.VetRegistrationScreen
-import com.example.petcare.ui.theme.screens.ViePetVet
+import androidx.navigation.navArgument
+import com.example.petcare.ui.theme.screens.*
 
 sealed class Screen(val route: String) {
     object WelcomePage : Screen("welcomepage")
@@ -40,8 +16,6 @@ sealed class Screen(val route: String) {
     object VetStartPage : Screen("vetstartpage")
     object VetLoginPage : Screen("vetloginpage")
     object MyPetsPage : Screen("mypetspage")
-    object HomePetPage : Screen("homepetpage")
-    object PetRegistry : Screen("petregistry")
     object PetHistoryPage : Screen("pethistorypage")
     object CalendarPage : Screen("calendarpage")
     object HealthBlogPage : Screen("healthblogpage")
@@ -59,6 +33,16 @@ sealed class Screen(val route: String) {
     object ViePetVet : Screen("viewpetvet")
     object SearchPetScreen : Screen("searchpetscreen")
     object VetPetCodeScree : Screen("vetpetcodescreen")
+    object PetRegistryNew : Screen("petregistry")
+
+    // RUTA CON PARÁMETRO
+    object HomePetPage : Screen("homepetpage/{idMascota}") {
+        fun createRoute(idMascota: Int) = "homepetpage/$idMascota"
+    }
+
+    object PetRegistry : Screen("petregistry/{idMascota}") {
+        fun createRoute(idMascota: Int) = "petregistry/$idMascota"
+    }
 }
 
 @Composable
@@ -86,12 +70,6 @@ fun AppNavigation() {
         }
         composable(Screen.MyPetsPage.route) {
             MyPetsPage(navController = navController)
-        }
-        composable(Screen.HomePetPage.route) {
-            HomeScreen(navController = navController)
-        }
-        composable(Screen.PetRegistry.route) {
-            PetRegistry(navController = navController)
         }
         composable(Screen.PetHistoryPage.route) {
             PetHistoryPage(navController = navController)
@@ -143,6 +121,25 @@ fun AppNavigation() {
         }
         composable(Screen.VetPetCodeScree.route) {
             VetPetCodeScreen(navController = navController)
+        }
+
+        // ✅ Ruta dinámica con parámetro
+        composable(
+            route = "homepetpage/{idMascota}",
+            arguments = listOf(navArgument("idMascota") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val idMascota = backStackEntry.arguments?.getInt("idMascota") ?: 0
+            HomeScreen(navController = navController, idMascota = idMascota)
+        }
+        composable(Screen.PetRegistryNew.route) {
+            PetRegistry(navController = navController, idMascota = 0)
+        }
+        composable(
+            route = "petregistry/{idMascota}",
+            arguments = listOf(navArgument("idMascota") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val idMascota = backStackEntry.arguments?.getInt("idMascota") ?: 0
+            PetRegistry(navController = navController, idMascota = idMascota)
         }
     }
 }
