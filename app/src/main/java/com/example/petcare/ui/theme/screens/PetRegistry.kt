@@ -1,5 +1,6 @@
 package com.example.petcare.ui.theme.screens
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,43 +8,32 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.data.local.Mascota
+import com.example.petcare.data.local.MascotaDaoImpl
+import com.example.petcare.data.local.repositories.MascotaRepository
 import com.example.petcare.ui.theme.navigation.Screen
 
-@Preview(showBackground = true)
 @Composable
-fun PreviewPetRegistry() {
-    val navController = rememberNavController()
-    PetRegistry(navController = navController)
-}
-
-@Composable
-fun PetRegistry(navController: NavController) {
-    var selectedRole by remember { mutableStateOf<String?>(null) }
-
+fun PetRegistry(navController: NavController, idMascota: Int) {
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
@@ -88,11 +78,14 @@ fun PetRegistry(navController: NavController) {
                             contentDescription = "Home Icon",
                             modifier = Modifier
                                 .size(50.dp)
-                                .clickable { navController.navigate(Screen.HomePetPage.route) }
+                                .clickable {
+                                    navController.navigate(Screen.HomePetPage.createRoute(idMascota))
+                                }
                         )
                     }
                 }
             }
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -101,8 +94,7 @@ fun PetRegistry(navController: NavController) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Box(
-                    modifier = Modifier
-                        .size(300.dp)
+                    modifier = Modifier.size(300.dp)
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.petcare_image_),
@@ -119,24 +111,9 @@ fun PetRegistry(navController: NavController) {
                             .size(50.dp)
                             .clickable { navController.navigate(Screen.PetQRCode.route) }
                     )
-                    Button(
-                        onClick = {},
-                        modifier = Modifier
-                            .align(Alignment.BottomCenter)
-                            .offset(y = (-5).dp),
-                        shape = RoundedCornerShape(10.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDEFAFF))
-                    ) {
-                        Text(
-                            text = "Dato BD",
-                            fontSize = 25.sp,
-                            color = Color(0xFF29978D),
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
-                PetRegistryForm()
+                PetRegistryForm(idMascota = idMascota)
             }
         }
     }
@@ -144,27 +121,61 @@ fun PetRegistry(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PetRegistryForm() {
-    var edad by remember { mutableStateOf(TextFieldValue("3")) }
-    var peso by remember { mutableStateOf(TextFieldValue("5")) }
+fun PetRegistryForm(idMascota: Int, context: Context = LocalContext.current) {
+    var nombre by remember { mutableStateOf(TextFieldValue("")) }
+    var edad by remember { mutableStateOf(TextFieldValue("")) }
+    var peso by remember { mutableStateOf(TextFieldValue("")) }
     var isDogSelected by remember { mutableStateOf(true) }
     var isCatSelected by remember { mutableStateOf(false) }
+    var mascotaCargada by remember { mutableStateOf<Mascota?>(null) }
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    LaunchedEffect(idMascota) {
+        val mascota = MascotaDaoImpl(context).obtenerMascotas().find { it.idMascota == idMascota }
+        mascota?.let {
+            nombre = TextFieldValue(it.nombre)
+            edad = TextFieldValue(it.edad.toString())
+            peso = TextFieldValue(it.pesoKg.toString())
+            isDogSelected = it.idTipoMascota == 1
+            isCatSelected = it.idTipoMascota == 2
+            mascotaCargada = it
+        }
+    }
+
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
                 .shadow(8.dp, shape = RoundedCornerShape(12.dp))
-                .border(
-                    BorderStroke(2.dp, Color(0xFFE1CEC8)),
-                    shape = RoundedCornerShape(12.dp)
-                )
+                .border(BorderStroke(2.dp, Color(0xFFE1CEC8)), shape = RoundedCornerShape(12.dp))
                 .background(Color(0xFFFFF2EB), shape = RoundedCornerShape(12.dp))
                 .padding(10.dp)
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(13.dp)) {
+
+                // Nombre
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Nombre",
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.weight(1f)
+                    )
+                    OutlinedTextField(
+                        value = nombre,
+                        onValueChange = { nombre = it },
+                        modifier = Modifier.weight(1f),
+                        singleLine = true,
+                        shape = RoundedCornerShape(20.dp),
+                        textStyle = LocalTextStyle.current.copy(fontSize = 20.sp),
+                        label = { Text("Nombre", fontSize = 18.sp) }
+                    )
+                }
+
+                // Edad
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -173,7 +184,6 @@ fun PetRegistryForm() {
                     Text(
                         text = "Edad",
                         fontSize = 25.sp,
-                        color = Color(0xFF000000),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.weight(1f)
                     )
@@ -187,6 +197,8 @@ fun PetRegistryForm() {
                         label = { Text("Años", fontSize = 18.sp) }
                     )
                 }
+
+                // Raza (dog/cat)
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -203,7 +215,6 @@ fun PetRegistryForm() {
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        //Perro
                         Image(
                             painter = painterResource(id = R.drawable.ic_dog),
                             contentDescription = "Dog Icon",
@@ -219,7 +230,6 @@ fun PetRegistryForm() {
                                 )
                                 .padding(5.dp)
                         )
-                        //Gato
                         Image(
                             painter = painterResource(id = R.drawable.ic_cat),
                             contentDescription = "Cat Icon",
@@ -237,6 +247,8 @@ fun PetRegistryForm() {
                         )
                     }
                 }
+
+                // Peso
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -258,25 +270,37 @@ fun PetRegistryForm() {
                         label = { Text("Kg", fontSize = 18.sp) }
                     )
                 }
+
+                // Guardar
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Imágenes",
+                        text = "Guardar",
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.weight(1f)
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.ic_cam),
-                        contentDescription = "Camera Icon",
+                        painter = painterResource(id = R.drawable.blog_icon),
+                        contentDescription = "Guardar",
                         modifier = Modifier
                             .size(40.dp)
                             .weight(1f)
                             .clickable {
-                                //Acción
+                                val mascota = Mascota(
+                                    idMascota = mascotaCargada?.idMascota ?: 0,
+                                    idTipoMascota = if (isDogSelected) 1 else 2,
+                                    idRaza = 1,
+                                    idPropietario = 1,
+                                    nombre = nombre.text,
+                                    edad = edad.text.toIntOrNull() ?: 0,
+                                    pesoKg = peso.text.toIntOrNull() ?: 0,
+                                    codigoQr = "QR001"
+                                )
+                                MascotaRepository.guardarMascota(context, mascota)
                             },
                         alignment = Alignment.Center
                     )
@@ -284,4 +308,10 @@ fun PetRegistryForm() {
             }
         }
     }
+}
+@Preview(showBackground = true, name = "Preview Registro")
+@Composable
+fun PreviewPetRegistry() {
+    val navController = rememberNavController()
+    PetRegistry(navController = navController, idMascota = 1)
 }
