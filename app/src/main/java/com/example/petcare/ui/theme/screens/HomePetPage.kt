@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -133,7 +134,7 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(120.dp))
+            Spacer(modifier = Modifier.height(110.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -167,13 +168,14 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(55.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
+
             ) {
-                IconButton(R.drawable.logo_home) { navController.navigate(Screen.HomePetPage.route) }
+                IconButton(R.drawable.cerrar_sesion) { navController.navigate(Screen.ProfileSelectionScreen.route) }
                 IconButton(R.drawable.logo) { navController.navigate(Screen.WelcomePage.route) }
 
             }
@@ -218,11 +220,11 @@ fun HomeOption(icon: Int, label: String, onClick: () -> Unit) {
 
 @Composable
 fun IconButton(icon: Int, onClick: () -> Unit) {
-    androidx.compose.material3.IconButton(onClick = onClick) {
+    androidx.compose.material3.IconButton(onClick = onClick, modifier = Modifier.size(60.dp)) {
         Image(
             painter = painterResource(id = icon),
             contentDescription = "Botón inferior",
-            modifier = Modifier.size(50.dp)
+            modifier = Modifier.size(60.dp)
         )
     }
 }
