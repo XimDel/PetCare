@@ -67,7 +67,7 @@ fun CalendarPage(navController: NavHostController) {
                     contentDescription = "Logo Home",
                     modifier = Modifier
                         .size(44.dp)
-                        .clickable { navController.navigate(Screen.HomePetPage.route) }
+                        .clickable { navController.navigate(Screen.MyPetsPage.route) }
                 )
 
                 Text(
@@ -83,7 +83,6 @@ fun CalendarPage(navController: NavHostController) {
                     contentDescription = "Logo App",
                     modifier = Modifier
                         .size(54.dp)
-                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
             }
 
@@ -131,10 +130,8 @@ fun CalendarPage(navController: NavHostController) {
                     .padding(vertical = 24.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                IconPlaceholder(R.drawable.mypets_pet_3) { navController.navigate(Screen.PetRegistry.route) }
+                IconPlaceholder(R.drawable.mypets_pet_3) { navController.navigate(Screen.CalendarPage.route) }
                 IconPlaceholder(R.drawable.logo_add) { navController.navigate(Screen.CalendarPage.route) }
-                IconPlaceholder(R.drawable.logo_reminder) { navController.navigate(Screen.CalendarPage.route) }
-                IconPlaceholder(R.drawable.logo_search) { navController.navigate(Screen.CalendarPage.route) }
             }
         }
     }
@@ -167,7 +164,7 @@ fun IconPlaceholder(iconRes: Int, onClick: () -> Unit) {
         painter = painterResource(id = iconRes),
         contentDescription = "Icono menú",
         modifier = Modifier
-            .size(64.dp)
+            .size(80.dp)
             .clickable { onClick() }
     )
 }

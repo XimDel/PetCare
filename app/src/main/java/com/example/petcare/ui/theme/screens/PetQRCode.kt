@@ -78,12 +78,11 @@ fun PetQRCode(navController: NavController) {
                             contentDescription = "Logo",
                             modifier = Modifier
                                 .size(70.dp)
-                                .clickable { navController.navigate(Screen.WelcomePage.route) }
                         )
-                        Button(
-                            onClick = {},
-                            shape = RoundedCornerShape(10.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF29978D))
+                        Box(
+                            modifier = Modifier
+                                .background(color = Color(0xFF29978D), shape = RoundedCornerShape(10.dp))
+                                .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             Text(
                                 text = "Dato BD",
@@ -97,7 +96,7 @@ fun PetQRCode(navController: NavController) {
                             contentDescription = "Home Icon",
                             modifier = Modifier
                                 .size(50.dp)
-                                .clickable { navController.navigate(Screen.HomePetPage.route) }
+                                .clickable { navController.navigate(Screen.MyPetsPage.route) }
                         )
                     }
                 }
