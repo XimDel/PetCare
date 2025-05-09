@@ -47,6 +47,8 @@ fun PreviewPetHistoryPage() {
 
 @Composable
 fun PetHistoryPage(navController: NavController) {
+    // Contenedor principal que ocupa todo el tamaño de la pantalla
+
     Box(modifier = Modifier.fillMaxSize()) {
         // Fondo completo
         Image(
@@ -74,7 +76,7 @@ fun PetHistoryPage(navController: NavController) {
                 .padding(top = 30.dp, start = 20.dp, end = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Título y logos
+            // Titulo principal y logos
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -117,8 +119,10 @@ fun PetHistoryPage(navController: NavController) {
 
 @Composable
 fun PetHistoryDetails(navController: NavController) {
+    // Columna principal que organiza los elementos verticalmente
+
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth()// La columna ocupa todo el ancho disponible
     ) {
 
         Row(
