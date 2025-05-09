@@ -173,9 +173,9 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                IconButton(R.drawable.logo_home){ navController.navigate(Screen.HomePetPage.route) }
+                IconButton(R.drawable.logo_home) { navController.navigate(Screen.HomePetPage.route) }
                 IconButton(R.drawable.logo) { navController.navigate(Screen.WelcomePage.route) }
-                IconButton(R.drawable.logo_settings) { navController.navigate(Screen.HomePetPage.route) }
+
             }
         }
     }
