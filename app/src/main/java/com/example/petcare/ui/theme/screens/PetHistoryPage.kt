@@ -107,7 +107,6 @@ fun PetHistoryPage(navController: NavController) {
                     contentDescription = "Logo Derecho",
                     modifier = Modifier
                         .size(54.dp)
-                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
             }
 

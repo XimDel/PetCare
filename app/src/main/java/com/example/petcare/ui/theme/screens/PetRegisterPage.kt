@@ -69,7 +69,6 @@ fun PetCodePage(navController: NavController) {
                 modifier = Modifier
                     .size(80.dp)
                     .padding(end = 12.dp)
-                    .clickable { navController.navigate(Screen.WelcomePage.route) }
             )
             Text(
                 text = "PetCare",
@@ -112,7 +111,7 @@ fun PetCodePage(navController: NavController) {
                     color = Color(0xFFFFC1C1),
                     icon = R.drawable.first_pet_icon,
                     onClick = {
-                        navController.navigate(Screen.PetRegistryNew.route) // ✅ navega sin ID
+                        navController.navigate(Screen.PetRegistryNew.route) //  navega sin ID
                     }
                 )
             }
@@ -123,7 +122,7 @@ fun PetCodePage(navController: NavController) {
                     .size(135.dp)
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 80.dp)
-                    .clickable { navController.navigate(Screen.HomePetPage.route) }
+                    .clickable { navController.navigate(Screen.OwnerStartPage.route) }
             )
         }
     }

@@ -123,7 +123,7 @@ fun AppNavigation() {
             VetPetCodeScreen(navController = navController)
         }
 
-        // ✅ Ruta dinámica con parámetro
+        //  Ruta dinámica con parametros
         composable(
             route = "homepetpage/{idMascota}",
             arguments = listOf(navArgument("idMascota") { type = NavType.IntType })
