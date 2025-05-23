@@ -109,14 +109,6 @@ fun VetRegistrationScreen(navController: NavHostController, idUsuario: Int = 2) 
                             .padding(top = 24.dp, bottom = 8.dp)
                             .size(350.dp)
                     )
-                    Image(
-                        painter = painterResource(id = R.drawable.vet_code_qr_image),
-                        contentDescription = "Vet QR Code",
-                        modifier = Modifier
-                            .size(80.dp)
-                            .align(Alignment.TopStart)
-                            .padding(top = 32.dp)
-                    )
                 }
 
                 Box(

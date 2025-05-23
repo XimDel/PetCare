@@ -61,7 +61,7 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
         mascota = dao.obtenerMascotas().find { it.idMascota == idMascota }
     }
 
-    val petName = mascota?.nombre ?: "Tu mascota"
+    val petName = mascota?.nombre ?: "      "
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(

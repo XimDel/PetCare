@@ -102,13 +102,6 @@ fun PetRegistry(navController: NavController, idMascota: Int) {
                             .fillMaxSize()
                             .zIndex(0f)
                     )
-                    Image(
-                        painter = painterResource(id = R.drawable.vet_code_qr_image),
-                        contentDescription = "qr_icon",
-                        modifier = Modifier
-                            .zIndex(0f)
-                            .size(50.dp)
-                    )
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 PetRegistryForm(idMascota = idMascota)
