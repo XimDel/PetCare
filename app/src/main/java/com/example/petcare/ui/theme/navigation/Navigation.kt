@@ -6,7 +6,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.petcare.ui.theme.screens.*
+import com.example.petcare.ui.theme.screens.BlogPostScreen
+import com.example.petcare.ui.theme.screens.HealthBlogPage
+import com.example.petcare.ui.theme.screens.HomeScreen
+import com.example.petcare.ui.theme.screens.MyPetsPage
+import com.example.petcare.ui.theme.screens.OwnerLoginPage
+import com.example.petcare.ui.theme.screens.OwnerStartPage
+import com.example.petcare.ui.theme.screens.PetCodePage
+import com.example.petcare.ui.theme.screens.PetCodePageV
+import com.example.petcare.ui.theme.screens.PetRegistry
+import com.example.petcare.ui.theme.screens.ProfileSelectionScreen
+import com.example.petcare.ui.theme.screens.VetLoginPage
+import com.example.petcare.ui.theme.screens.VetMainMenuScreen
+import com.example.petcare.ui.theme.screens.VetRegistrationScreen
+import com.example.petcare.ui.theme.screens.VetStartPage
+import com.example.petcare.ui.theme.screens.WelcomePage
 
 sealed class Screen(val route: String) {
     object WelcomePage : Screen("welcomepage")
@@ -16,23 +30,12 @@ sealed class Screen(val route: String) {
     object VetStartPage : Screen("vetstartpage")
     object VetLoginPage : Screen("vetloginpage")
     object MyPetsPage : Screen("mypetspage")
-    object PetHistoryPage : Screen("pethistorypage")
-    object CalendarPage : Screen("calendarpage")
     object HealthBlogPage : Screen("healthblogpage")
-    object PetQRCode : Screen("petqrcode")
     object PetRegisterPage : Screen("petregisterpage")
     object BlogPostScreen : Screen("blogpostscreen")
-    object ScannerQRCodeScreen : Screen("scannerqrcodescreen")
     object VetRegisterPage : Screen("vetregisterpage")
     object VetRegistrationPage : Screen("vetregistrationpage")
-    object VetCodeScreen : Screen("vetcodescreen")
     object VetMainMenuScreen : Screen("vetmainmenuscreen")
-    object AddPetVetPage : Screen("addpetvetpage")
-    object AddPetVet : Screen("addpetvet")
-    object PetHistoryVet : Screen("pethistoryvet")
-    object ViePetVet : Screen("viewpetvet")
-    object SearchPetScreen : Screen("searchpetscreen")
-    object VetPetCodeScree : Screen("vetpetcodescreen")
     object PetRegistryNew : Screen("petregistry")
     object HomePetPageNew : Screen("homepetpage")
 
@@ -72,17 +75,8 @@ fun AppNavigation() {
         composable(Screen.MyPetsPage.route) {
             MyPetsPage(navController = navController)
         }
-        composable(Screen.PetHistoryPage.route) {
-            PetHistoryPage(navController = navController)
-        }
-        composable(Screen.CalendarPage.route) {
-            CalendarPage(navController = navController)
-        }
         composable(Screen.HealthBlogPage.route) {
             HealthBlogPage(navController = navController)
-        }
-        composable(Screen.PetQRCode.route) {
-            PetQRCode(navController = navController)
         }
         composable(Screen.PetRegisterPage.route) {
             PetCodePage(navController = navController)
@@ -90,40 +84,15 @@ fun AppNavigation() {
         composable(Screen.BlogPostScreen.route) {
             BlogPostScreen(navController = navController)
         }
-        composable(Screen.ScannerQRCodeScreen.route) {
-            ScannerQRCodeScreen(navController = navController)
-        }
         composable(Screen.VetRegisterPage.route) {
             PetCodePageV(navController = navController)
         }
         composable(Screen.VetRegistrationPage.route) {
             VetRegistrationScreen(navController = navController)
         }
-        composable(Screen.VetCodeScreen.route) {
-            VetCodeScreen(navController = navController)
-        }
         composable(Screen.VetMainMenuScreen.route) {
             VetMainMenuScreen(navController = navController)
         }
-        composable(Screen.AddPetVetPage.route) {
-            AddPetVetPage(navController = navController)
-        }
-        composable(Screen.AddPetVet.route) {
-            PetProfileScreen(navController = navController)
-        }
-        composable(Screen.PetHistoryVet.route) {
-            PetHistoryVet(navController = navController)
-        }
-        composable(Screen.ViePetVet.route) {
-            ViePetVet(navController = navController)
-        }
-        composable(Screen.SearchPetScreen.route) {
-            SearchPetScreen(navController = navController)
-        }
-        composable(Screen.VetPetCodeScree.route) {
-            VetPetCodeScreen(navController = navController)
-        }
-
         composable(Screen.HomePetPageNew.route) {
             HomeScreen(navController = navController, idMascota = 0)
         }
