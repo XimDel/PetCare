@@ -145,22 +145,12 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
                     label = "Registro",
                     onClick = { navController.navigate("petregistry/${idMascota}") }
                 )
-                HomeOption(
-                    icon = R.drawable.homepage_history,
-                    label = "Historial",
-                    onClick = { navController.navigate(Screen.PetHistoryPage.route) }
-                )
             }
             Spacer(modifier = Modifier.height(16.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                HomeOption(
-                    icon = R.drawable.homepage_calendar,
-                    label = "Calendario",
-                    onClick = { navController.navigate(Screen.CalendarPage.route) }
-                )
                 HomeOption(
                     icon = R.drawable.homepage_blog,
                     label = "Blog",
