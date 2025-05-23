@@ -89,26 +89,9 @@ fun PetCodePageV(navController: NavController) {
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 180.dp, start = 35.dp),
+                    .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top
-            ) {
-                Spacer(modifier = Modifier.height(1.dp))
-                RoleButtonFd(
-                    text = "Agregar Veterinario existente",
-                    color = Color(0xFFA4C8E1),
-                    icon = R.drawable.first_vet_icon,
-                    navController = navController
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 510.dp, start = 35.dp)
-                    .align(Alignment.TopCenter),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center
             ) {
                 RoleButtonFc(
                     text = "Ver datos del Veterinario",
@@ -119,6 +102,7 @@ fun PetCodePageV(navController: NavController) {
                     }
                 )
             }
+
             Icon(
                 imageVector = Icons.Default.Home,
                 contentDescription = "home",
@@ -130,6 +114,7 @@ fun PetCodePageV(navController: NavController) {
                 tint = Color.White
             )
         }
+
     }
 }
 
@@ -204,37 +189,5 @@ fun RoleButtonFd(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-        ) {
-            Button(
-                onClick = { navController.navigate(Screen.VetCodeScreen.route) },
-                modifier = Modifier
-                    .weight(1f)
-                    .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF2A4D65),
-                    contentColor = Color.White
-                )
-            ) {
-                Text(text = "Código")
-            }
-
-            Spacer(modifier = Modifier.width(10.dp))
-
-            Button(
-                onClick = { navController.navigate(Screen.ScannerQRCodeScreen.route) },
-                modifier = Modifier
-                    .weight(1f)
-                    .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF2A4D65),
-                    contentColor = Color.White
-                )
-            ) {
-                Text(text = "QR")
-            }
-        }
     }
 }
