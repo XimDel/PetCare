@@ -126,6 +126,13 @@ fun VetLoginPage(navController: NavController) {
                         }
                     }
                 )
+                if (loginError) {
+                    Text(
+                        text = "Credenciales incorrectas",
+                        color = Color.Red,
+                        fontSize = 16.sp
+                    )
+                }
             }
         }
     }
@@ -144,7 +151,7 @@ fun CustomTextFieldsVLP(
         onValueChange = onUsernameChange,
         label = { Text("Usuario", fontSize = 20.sp, color = Color.White) },
         singleLine = true,
-        textStyle = androidx.compose.ui.text.TextStyle(fontSize = 19.sp),
+        textStyle = androidx.compose.ui.text.TextStyle(fontSize = 19.sp, color = Color.White),
         modifier = Modifier.fillMaxWidth(0.7f),
         shape = RoundedCornerShape(20.dp)
     )

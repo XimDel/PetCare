@@ -26,12 +26,18 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -43,8 +49,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
-import com.example.petcare.ui.theme.navigation.Screen
+import com.example.petcare.data.local.Usuario
+import com.example.petcare.data.local.UsuarioDaoImpl
 import com.example.petcare.ui.theme.ThreeElementHeader
+import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true)
 @Composable
@@ -54,7 +62,14 @@ fun PreviewVetRegistrationPage() {
 }
 
 @Composable
-fun VetRegistrationScreen(navController: NavHostController) {
+fun VetRegistrationScreen(navController: NavHostController, idUsuario: Int = 2) {
+    val context = LocalContext.current
+    var usuario by remember { mutableStateOf<Usuario?>(null) }
+
+    LaunchedEffect(Unit) {
+        usuario = UsuarioDaoImpl(context).obtenerUsuarios().find { it.idUsuario == idUsuario }
+    }
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -86,7 +101,7 @@ fun VetRegistrationScreen(navController: NavHostController) {
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Box() { // Contenedor para la imagen y el QR
+                Box {
                     Image(
                         painter = painterResource(id = R.drawable.vet_code_image),
                         contentDescription = "vet photo",
@@ -100,11 +115,12 @@ fun VetRegistrationScreen(navController: NavHostController) {
                         contentDescription = "Vet QR Code",
                         modifier = Modifier
                             .size(80.dp)
-                            .align(Alignment.TopStart) // Lo posiciona arriba a la izquierda
+                            .align(Alignment.TopStart)
                             .padding(top = 32.dp)
                             .clickable { navController.navigate(Screen.VetCodeScreen.route) }
                     )
                 }
+
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
@@ -124,10 +140,11 @@ fun VetRegistrationScreen(navController: NavHostController) {
                         fontSize = 28.sp,
                     )
                 }
+
                 Column(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    Box( // Contenedor para el "formulario" de registro
+                    Box(
                         modifier = Modifier
                             .wrapContentHeight()
                             .padding(5.dp)
@@ -139,26 +156,24 @@ fun VetRegistrationScreen(navController: NavHostController) {
                                 .fillMaxWidth()
                                 .padding(16.dp)
                                 .align(Alignment.Center),
-                            verticalArrangement = Arrangement.spacedBy(0.5.dp), // Espaciado uniforme entre las filas
+                            verticalArrangement = Arrangement.spacedBy(0.5.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             VetRegistrationRow(
                                 containerText = "Veterinario",
-                                textValue = "Dato BD"
+                                textValue = usuario?.nombre ?: "Cargando..."
                             )
                             VetRegistrationRow(
                                 containerText = "Dirección",
-                                textValue = "Dato BD"
+                                textValue = "Dato no disponible"
                             )
                             VetRegistrationRow(
                                 containerText = "Email",
-                                containerIcon = Icons.Default.Email,
-                                textValue = "Nombre del Veterinario"
+                                textValue = usuario?.correo ?: "Cargando..."
                             )
                             VetRegistrationRow(
                                 containerText = "Teléfono",
-                                containerIcon = Icons.Default.Phone,
-                                textValue = "Nombre del Veterinario"
+                                textValue = "Dato no disponible"
                             )
                         }
                     }
