@@ -111,7 +111,7 @@ fun PetCodePageV(navController: NavController) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 RoleButtonFc(
-                    text = " Registrar Nuevo Veterinario ",
+                    text = "Ver datos del Veterinario",
                     color = Color(0xFFA4C8E1),
                     icon = R.drawable.first_vet_icon,
                     onClick = {
@@ -126,7 +126,7 @@ fun PetCodePageV(navController: NavController) {
                     .size(100.dp)
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 20.dp)
-                    .clickable { navController.navigate(Screen.VetMainMenuScreen.route) },
+                    .clickable { navController.navigate(Screen.VetStartPage.route) },
                 tint = Color.White
             )
         }

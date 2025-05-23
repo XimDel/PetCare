@@ -110,29 +110,23 @@ fun VetMainMenuScreen(navController: NavController) {
                 // Cada botón navega a Screen.AQUIPANTALLA.route al hacer click
                 VetMainMenuButton(
                     buttonIcon = Icons.Default.Add,
-                    buttonText = "Agregar Mascota",
-                    onClick = { navController.navigate(Screen.AddPetVetPage.route) }
+                    buttonText = "Ver Veterinario",
+                    onClick = { navController.navigate(Screen.VetRegistrationPage.route) }
                 )
                 VetMainMenuButton(
                     buttonIcon = Icons.Default.Search,
-                    buttonText = "Ver Mascota",
-                    onClick = { navController.navigate(Screen.SearchPetScreen.route) }
+                    buttonText = "Registro Mascota",
+                    onClick = {
+                        navController.navigate(Screen.PetRegistryNew.route)
+                    }
                 )
                 VetMainMenuButton(
                     buttonIcon = Icons.Default.Info,
                     buttonText = "Historial de Mascotas",
-                    onClick = { navController.navigate(Screen.PetHistoryVet.route) }
+                    onClick = { navController.navigate(Screen.MyPetsPage.route) }
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
-
-               /* Image(
-                    painter = painterResource(id = R.drawable.house_icon),
-                    contentDescription = "House icon",
-                    modifier = Modifier
-                        .size(80.dp)
-                        .align(Alignment.CenterHorizontally)
-                )*/ // Boton duplicado "home", pendiente definir si queda o no
             }
         }
     }

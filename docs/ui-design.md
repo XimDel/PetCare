@@ -7,7 +7,7 @@ Los colores a usar son en su mayoría tonos pastel y tonos vivos.
 El diseño completo interactivo de PetCare está disponible en Marvel App.
 [Diseño interactivo - Marvel App](https://marvelapp.com/prototype/acbj018)
 
-A continuación se presentan las principales pantallas:
+A continuación se presentan como se verían algunas de las pantallas principales de la aplicación:
 
 **(Para ver todas las pantallas, visitar el siguiente link: [Marvel App](https://marvelapp.com/prototype/acbj018))**
 
@@ -24,9 +24,3 @@ A continuación se presentan las principales pantallas:
    de vacunas, citas y otros.
 
    ![Historial médico](images/Historial.png)
-
-3. Calendario
-
-   Aquí el usuario podrá configurar recordatorios, y gestionar las citas médicas de su mascota.
-
-   ![Calendario](images/Calendario.png)
