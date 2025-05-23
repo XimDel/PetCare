@@ -63,7 +63,6 @@ fun PetRegistry(navController: NavController, idMascota: Int) {
                             contentDescription = "Logo",
                             modifier = Modifier
                                 .size(70.dp)
-                                .clickable { navController.navigate(Screen.WelcomePage.route) }
                         )
                         Text(
                             text = "Registro",

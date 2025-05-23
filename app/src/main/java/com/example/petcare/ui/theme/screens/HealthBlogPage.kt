@@ -87,9 +87,7 @@ fun HealthBlogPage(navController: NavHostController) {
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo Derecho",
                     modifier = Modifier
-                        .size(54.dp)
-                        .clickable { navController.navigate(Screen.WelcomePage.route) }
-                )
+                        .size(54.dp))
             }
 
 

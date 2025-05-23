@@ -164,9 +164,13 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
                 horizontalArrangement = Arrangement.SpaceEvenly
 
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.logo),
+                    contentDescription = "Logo",
+                    modifier = Modifier
+                        .size(70.dp)
+                )
                 IconButton(R.drawable.cerrar_sesion) { navController.navigate(Screen.ProfileSelectionScreen.route) }
-                IconButton(R.drawable.logo) { navController.navigate(Screen.WelcomePage.route) }
-
             }
         }
     }
