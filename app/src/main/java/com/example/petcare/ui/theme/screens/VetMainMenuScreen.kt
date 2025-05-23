@@ -71,7 +71,7 @@ fun VetMainMenuScreen(navController: NavController) {
                     colorFirstText = Color(0xFF91d4cd),
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon",
-                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
+                    onFirstIconClick = { navController.navigate(Screen.VetStartPage.route) },
                 )
             },
             containerColor = Color.Transparent

@@ -8,9 +8,7 @@ Diseño y desarrollo de una aplicación móvil que ofrezca los servicios de un r
 para la gestión de salud de las mismas. La aplicación permitirá a los usuarios llevar un control de las 
 vacunas (carnet digital), tratamientos y citas médicas para evitar la pérdida de información importante 
 en papel, además del acceso a un blog de salud.
-
-    Aplicaciones similares:
-    
+ 
 
 ### Aplicaciones similares
 
