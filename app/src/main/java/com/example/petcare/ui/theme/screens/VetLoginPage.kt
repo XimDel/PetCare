@@ -112,19 +112,7 @@ fun VetLoginPage(navController: NavController) {
                     text = "Iniciar Sesión",
                     color = Color(0xFFFFFFFF),
                     isSelected = selectedRole == "Iniciar Sesión",
-                    onClick = {
-                        val dao = UsuarioDaoImpl(context)
-                        val usuarios = dao.obtenerUsuarios()
-                        val usuarioValido = usuarios.any {
-                            it.correo == username.trim() && it.contrasenia == password.trim()
-                        }
-
-                        if (usuarioValido) {
-                            navController.navigate(Screen.MyPetsPage.route)
-                        } else {
-                            loginError = true
-                        }
-                    }
+                    onClick = {navController.navigate(Screen.VetMainMenuScreen.route)}
                 )
                 if (loginError) {
                     Text(

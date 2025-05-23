@@ -117,7 +117,6 @@ fun VetRegistrationScreen(navController: NavHostController, idUsuario: Int = 2) 
                             .size(80.dp)
                             .align(Alignment.TopStart)
                             .padding(top = 32.dp)
-                            .clickable { navController.navigate(Screen.VetCodeScreen.route) }
                     )
                 }
 

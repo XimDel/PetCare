@@ -109,7 +109,6 @@ fun PetRegistry(navController: NavController, idMascota: Int) {
                         modifier = Modifier
                             .zIndex(0f)
                             .size(50.dp)
-                            .clickable { navController.navigate(Screen.PetQRCode.route) }
                     )
                 }
                 Spacer(modifier = Modifier.height(20.dp))
