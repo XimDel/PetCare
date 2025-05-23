@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.petcare.R
+import com.example.petcare.data.local.UsuarioDaoImpl
 import com.example.petcare.ui.theme.navigation.Screen
 
 @Preview(showBackground = true)
@@ -43,6 +45,8 @@ fun VetLoginPage(navController: NavController) {
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    var loginError by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -109,8 +113,17 @@ fun VetLoginPage(navController: NavController) {
                     color = Color(0xFFFFFFFF),
                     isSelected = selectedRole == "Iniciar Sesión",
                     onClick = {
-                        selectedRole = "Iniciar Sesión"
-                        navController.navigate(Screen.VetMainMenuScreen.route)
+                        val dao = UsuarioDaoImpl(context)
+                        val usuarios = dao.obtenerUsuarios()
+                        val usuarioValido = usuarios.any {
+                            it.correo == username.trim() && it.contrasenia == password.trim()
+                        }
+
+                        if (usuarioValido) {
+                            navController.navigate(Screen.MyPetsPage.route)
+                        } else {
+                            loginError = true
+                        }
                     }
                 )
             }
