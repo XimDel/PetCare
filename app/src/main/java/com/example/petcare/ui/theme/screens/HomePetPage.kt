@@ -64,7 +64,6 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
     val petName = mascota?.nombre ?: "Tu mascota"
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // Imagen de fondo
         Image(
             painter = painterResource(id = R.drawable.home_page_background),
             contentDescription = "Fondo",
