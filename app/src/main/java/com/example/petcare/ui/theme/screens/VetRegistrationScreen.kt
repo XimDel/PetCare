@@ -89,8 +89,7 @@ fun VetRegistrationScreen(navController: NavHostController, idUsuario: Int = 2) 
                     secondIcon = R.drawable.logo,
                     secondContentDescription = "Petcare icon",
                     useBoxForTitle = true,
-                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) },
-                    onSecondIconClick = { navController.navigate(Screen.WelcomePage.route) }
+                    onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) }
                 )
             },
             containerColor = Color.Transparent

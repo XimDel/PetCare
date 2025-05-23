@@ -71,7 +71,6 @@ fun VetLoginPage(navController: NavController) {
                     modifier = Modifier
                         .size(80.dp)
                         .padding(end = 12.dp)
-                        .clickable { navController.navigate(Screen.WelcomePage.route) }
                 )
                 Text(
                     text = "PetCare",
