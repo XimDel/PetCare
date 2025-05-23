@@ -61,10 +61,9 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
         mascota = dao.obtenerMascotas().find { it.idMascota == idMascota }
     }
 
-    val petName = mascota?.nombre ?: "Cargando..."
+    val petName = mascota?.nombre ?: "Tu mascota"
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // Imagen de fondo
         Image(
             painter = painterResource(id = R.drawable.home_page_background),
             contentDescription = "Fondo",
@@ -145,22 +144,12 @@ fun HomeScreen(navController: NavHostController, idMascota: Int) {
                     label = "Registro",
                     onClick = { navController.navigate("petregistry/${idMascota}") }
                 )
-                HomeOption(
-                    icon = R.drawable.homepage_history,
-                    label = "Historial",
-                    onClick = { navController.navigate(Screen.PetHistoryPage.route) }
-                )
             }
             Spacer(modifier = Modifier.height(16.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                HomeOption(
-                    icon = R.drawable.homepage_calendar,
-                    label = "Calendario",
-                    onClick = { navController.navigate(Screen.CalendarPage.route) }
-                )
                 HomeOption(
                     icon = R.drawable.homepage_blog,
                     label = "Blog",

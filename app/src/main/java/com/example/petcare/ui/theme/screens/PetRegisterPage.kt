@@ -85,33 +85,16 @@ fun PetCodePage(navController: NavController) {
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 200.dp, start = 35.dp),
+                    .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top
-            ) {
-                Spacer(modifier = Modifier.height(1.dp))
-                RoleButtonFp(
-                    text = "Agregar Mascota existente",
-                    color = Color(0xFFFFC1C1),
-                    icon = R.drawable.first_pet_icon,
-                    navController = navController  // Pasamos navController
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 510.dp, start = 35.dp)
-                    .align(Alignment.TopCenter),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center // Centra verticalmente
             ) {
                 RoleButtonFx(
                     text = " Registrar Nueva Mascota   ",
                     color = Color(0xFFFFC1C1),
                     icon = R.drawable.first_pet_icon,
                     onClick = {
-                        navController.navigate(Screen.PetRegistryNew.route) //  navega sin ID
+                        navController.navigate(Screen.PetRegistryNew.route)
                     }
                 )
             }
@@ -121,10 +104,11 @@ fun PetCodePage(navController: NavController) {
                 modifier = Modifier
                     .size(135.dp)
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = 80.dp)
+                    .padding(bottom = 70.dp)
                     .clickable { navController.navigate(Screen.OwnerStartPage.route) }
             )
         }
+
     }
 }
 
@@ -203,35 +187,7 @@ fun RoleButtonFp(
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
-        ) {
-            Button(
-                onClick = { navController.navigate(Screen.PetQRCode.route) },
-                modifier = Modifier
-                    .weight(1f)
-                    .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF0F0),
-                    contentColor = Color.Black
-                )
-            ) {
-                Text(text = "Código")
-            }
-
-            Spacer(modifier = Modifier.width(10.dp))
-
-            Button(
-                onClick = { navController.navigate(Screen.ScannerQRCodeScreen.route) },
-                modifier = Modifier
-                    .weight(1f)
-                    .border(2.dp, Color.Black, shape = RoundedCornerShape(50)),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF0F0),
-                    contentColor = Color.Black
-                )
-            ) {
-                Text(text = "QR")
-            }
-        }
+        ) {}
     }
 }
 
