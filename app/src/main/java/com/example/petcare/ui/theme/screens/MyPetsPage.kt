@@ -144,7 +144,7 @@ fun MyPetsPage(navController: NavHostController) {
                 modifier = Modifier
                     .clip(RoundedCornerShape(50))
                     .background(Color(0xFF29978D))
-                    .clickable { navController.navigate(Screen.PetRegisterPage.route) }
+                    .clickable { navController.navigate(Screen.PetRegistryNew.route) }
                     .padding(horizontal = 20.dp, vertical = 10.dp),
                 contentAlignment = Alignment.Center
             ) {

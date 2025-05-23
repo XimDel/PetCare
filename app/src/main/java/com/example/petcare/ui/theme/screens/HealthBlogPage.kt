@@ -69,7 +69,7 @@ fun HealthBlogPage(navController: NavHostController) {
                     contentDescription = "Logo Izquierdo",
                     modifier = Modifier
                         .size(44.dp)
-                        .clickable { navController.navigate(Screen.HomePetPage.route) }
+                        .clickable { navController.navigate(Screen.HomePetPageNew.route) }
                 )
 
                 // Título

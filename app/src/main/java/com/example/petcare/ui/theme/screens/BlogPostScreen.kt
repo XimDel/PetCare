@@ -43,7 +43,7 @@ fun BlogPostScreen(navController: NavHostController) {
                 colorFirstText = Color(0xFF7555a7),
                 secondIcon = R.drawable.logo,
                 secondContentDescription = "Petcare icon",
-                onFirstIconClick = { navController.navigate(Screen.VetMainMenuScreen.route) }
+                onFirstIconClick = { navController.navigate(Screen.HealthBlogPage.route) }
             )
         }
     ) { innerPadding ->

@@ -34,6 +34,7 @@ sealed class Screen(val route: String) {
     object SearchPetScreen : Screen("searchpetscreen")
     object VetPetCodeScree : Screen("vetpetcodescreen")
     object PetRegistryNew : Screen("petregistry")
+    object HomePetPageNew : Screen("homepetpage")
 
     // RUTA CON PARÁMETRO
     object HomePetPage : Screen("homepetpage/{idMascota}") {
@@ -121,6 +122,10 @@ fun AppNavigation() {
         }
         composable(Screen.VetPetCodeScree.route) {
             VetPetCodeScreen(navController = navController)
+        }
+
+        composable(Screen.HomePetPageNew.route) {
+            HomeScreen(navController = navController, idMascota = 0)
         }
 
         //  Ruta dinámica con parametros
